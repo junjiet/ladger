@@ -58,3 +58,9 @@ create table privilege (
 	constraint privilege_feature_fk foreign key (feature_id)
 		references feature(feature_id)
 );
+
+create table trail_type (
+	trail_type number(3),
+	trail_description varchar(50) not null,
+	constraint trail_type_pk primary key (trail_type)
+);
