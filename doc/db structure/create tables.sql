@@ -18,3 +18,19 @@ create table user_account (
 	constraint user_account_person_fk foreign key (prsn_id)
 		references person(prsn_id)
 );
+
+create table group_account (
+	group_id number(3),
+	group_name varchar(30) not null,
+	constraint group_account_pk primary key (group_id)
+);
+
+create table user_group (
+	username varchar(15),
+	group_id number(3),
+	constraint user_group_pk primary key (username,group_id),
+	constraint user_group_username_fk foreign key (username)
+		references user_account(username),
+	constraint user_group_group_fk foreign key (group_id)
+		references group_account(group_id)
+);
