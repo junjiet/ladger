@@ -47,3 +47,14 @@ create table app_constant (
 	constant_value varchar(500),
 	constraint app_constant_pk primary key (feature_id)
 );
+
+create table privilege (
+	group_id number(3),
+	feature_id varchar(20),
+	bit_access_level number(6) not null,
+	constraint privilege_pk primary key (group_id,feature_id),
+	constraint privilege_group_fk foreign key (group_id)
+		references group_account(group_id),
+	constraint privilege_feature_fk foreign key (feature_id)
+		references feature(feature_id)
+);
