@@ -64,3 +64,13 @@ create table trail_type (
 	trail_description varchar(50) not null,
 	constraint trail_type_pk primary key (trail_type)
 );
+
+create table trail_login (
+	username varchar(15),
+	log_record number(6) not null,
+	log_type number(3) not null,
+	log_time datetime not null,
+	constraint trail_login_pk primary key (username,log_record),
+	constraint trail_login_username_fk foreign key (username)
+	references user_account(username)
+);
