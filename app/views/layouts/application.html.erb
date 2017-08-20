@@ -11,6 +11,40 @@
   </head>
 
   <body>
+    <header id="header" class="navbar navbar-fixed-top" style="background:#369; border-bottom: 2px solid rgb(255, 153, 51); position: relative;">
+      <div class="container" style="margin-left: 0;">
+        <div class="navbar-header" style="background:#369; ">
+          <a class="navbar-brand" href="javascript:void(0);" style="width:100%; border-bottom: 2px solid rgb(255, 153, 51);">
+            <h4 style="color:#fff; margin-left: 0; font-size: 28px; font-family: 'Times New Roman', Times, serif;" class="font-alt">Ladger</h4>
+          </a>
+        </div>
+        <!-- START Toolbar -->
+        <div class="navbar-toolbar clearfix">
+          <!-- START Left nav -->
+          <ul class="nav navbar-nav navbar-left">
+            <!-- Sidebar shrink -->
+            <li class="hidden-xs hidden-sm">
+              <a href="javascript:void(0);" class="sidebar-minimize" style="border-bottom: 2px solid rgb(255, 153, 51);" data-toggle="minimize" title="Minimize sidebar">
+                <span class="meta">
+                  <span class="icon"></span>
+                </span>
+              </a>
+            </li>
+            <!-- Offcanvas left: This menu will take position at the top of template header (mobile only). Make sure that only #header have the `position: relative`, or it may cause unwanted behavior -->
+            <li class="navbar-main hidden-lg hidden-md hidden-sm">
+              <a href="javascript:void(0);" data-toggle="sidebar" data-direction="ltr" rel="tooltip" title="Menu sidebar">
+                <span class="meta">
+                  <span class="icon"><i class="ico-paragraph-justify3"></i></span>
+                </span>
+              </a>
+            </li>
+            <!--/ Offcanvas left -->
+          </ul>
+          <!--/ END Left nav -->
+        </div>
+        <!--/ END Toolbar -->
+      </div>
+    </header>
     <%= yield %>
   </body>
 </html>
