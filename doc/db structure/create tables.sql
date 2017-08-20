@@ -34,3 +34,16 @@ create table user_group (
 	constraint user_group_group_fk foreign key (group_id)
 		references group_account(group_id)
 );
+
+create table feature (
+	feature_id varchar(20),
+	feature_name varchar(30) not null,
+	feature_details varchar(200),
+	constraint feature_pk primary key (feature_id)
+);
+
+create table app_constant (
+	feature_id varchar(20),
+	constant_value varchar(500),
+	constraint app_constant_pk primary key (feature_id)
+);
