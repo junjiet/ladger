@@ -6,6 +6,9 @@ create table person (
 	prsn_fnamesuffix varchar(10),
 	prsn_mname varchar(30),
 	prsn_minitial varchar(10),
+	prsn_gender char(1) not null,
+	prsn_birthdate datetime,
+	prsn_civilstatus char(1),
 	constraint person_pk primary key (prsn_id)
 );
 
