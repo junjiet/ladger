@@ -8,15 +8,21 @@ class AccessController < ApplicationController
 		password = params[:password];
 
 		userAccount = User_account.where('username=?',username);
-		pwdRecorded = userAccount[0].password;
 
-		lh = LadgerHash.new
-		pwdHash = lh.hash(password);
+		@authenticated = false;
+		if userAccount.length>0 then
+			pwdRecorded = userAccount[0].password;
 
-		@authenticated = (pwdRecorded==pwdHash);
+			lh = LadgerHash.new
+			pwdHash = lh.hash(password);
+
+			@authenticated = (pwdRecorded==pwdHash);
+		end
 	end
 
+	#------------------------------------------------------------------
 	private
+	
 	class LadgerHash
 		require 'digest';
 		def hash(raw)
