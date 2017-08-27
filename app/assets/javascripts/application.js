@@ -11,22 +11,9 @@
 // about supported directives.
 //
 
-//= require jquery.min
-//= require jquery-ui.min
-//= require jquery.datatables.min
-//= require jquery.ddslick.min
-//= require jquery.sparkline.min
-
-//= require bootstrap.min
-
-//= require ladda.min
-//= require parsley.min
-//= require selectize.min
-//= require spin.min
-
+//= require jquery-3.2.1
 //= require rails-ujs
 //= require turbolinks
 
 //= require script-custom
-
 //= require_tree .
