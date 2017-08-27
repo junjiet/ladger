@@ -10,6 +10,8 @@ class AccessController < ApplicationController
 		userAccount = User_account.where('username=?',username);
 
 		@authenticated = false;
+		@errorMessage = 'Invalid username or password.';
+		@activeStatus = nil;
 		if userAccount.length>0 then
 			pwdRecorded = userAccount[0].password;
 
@@ -17,6 +19,17 @@ class AccessController < ApplicationController
 			pwdHash = lh.hash(password);
 
 			@authenticated = (pwdRecorded==pwdHash);
+
+			if @authenticated then
+				@activeStatus = userAccount[0].active;
+				if @activeStatus==0 then
+					@authenticated = false;
+					@errorMessage = 'Account has been deactivated.';
+				elsif @activeStatus==2 then
+					@authenticated = false;
+					@errorMessage = 'Account password needs to be changed before using the system.';
+				end
+			end
 		end
 	end
 
