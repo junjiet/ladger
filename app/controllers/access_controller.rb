@@ -13,7 +13,7 @@ class AccessController < ApplicationController
 		if userAccount.length>0 then
 			pwdRecorded = userAccount[0].password;
 
-			lh = LadgerHash.new
+			lh = LadgerHash.new;
 			pwdHash = lh.hash(password);
 
 			@authenticated = (pwdRecorded==pwdHash);

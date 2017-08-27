@@ -4,7 +4,15 @@ class ApplicationController < ActionController::Base
 
 	private
 	def common
+		#url base of the app available for all controllers:
 		@urlBase = getUrlBase;
+
+		#redirection to login screen if not in session:
+		if !(controller_name=='access' && action_name=='login') then
+			if(session[:current_user].blank?)
+				redirect_to controller: "access", action: "login"
+			end
+		end
 	end	
 
 	def getUrlBase
