@@ -26,3 +26,11 @@
 	background:#31572C;
 	border-bottom: 2px solid #90A955;
 }
+
+.logo-figure
+{
+	background-image: url("fire-exit.jpg");
+	width: 100px;
+	height: 100px;
+	background-size: 100px 100px;
+}
