@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'access/login'
+  get 'access/getAuthentication'
 
   get 'home/index'
 

@@ -1,6 +1,19 @@
 class AccessController < ApplicationController
 	def login
+		
+	end
 
+	def getAuthentication
+		username = params[:username];
+		password = params[:password];
+
+		userAccount = User_account.where('username=?',username);
+		pwdRecorded = userAccount[0].password;
+
+		lh = LadgerHash.new
+		pwdHash = lh.hash(password);
+
+		@authenticated = (pwdRecorded==pwdHash);
 	end
 
 	private
