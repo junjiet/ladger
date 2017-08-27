@@ -20,3 +20,18 @@ function setupDataTable(tableWrapperID,filterID) {
 	$(tableWrapperID+' .dataTables_paginate .next span.text').html('>');
 	$(tableWrapperID+' .dataTables_paginate .pagination').addClass('pagination-sm');
 }
+
+function showError(divAlertContainerID,errorMessage) {
+	if ( $(divAlertContainerID).children().length > 0 ) {
+		$('#errorMessage').html(errorMessage);
+		$(divAlertContainerID+' .alert').addClass('animation animating shake');
+	} else {
+		$(divAlertContainerID).append(
+			'<div class="alert alert-dismissable alert-danger">'
+				+'<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'
+				+'<strong>Error: </strong>'
+				+'<span id="errorMessage">'+errorMessage+'</span>'
+			+'</div>');
+	}
+	setTimeout(function () {$(divAlertContainerID+' .alert').removeClass("animation animating shake");},1500);
+}
