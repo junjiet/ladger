@@ -35,7 +35,8 @@ class AccessController < ApplicationController
 		end
 	end
 	def signOut
-
+		reset_session;
+		redirect_to action: "signIn";
 	end
 
 	#------------------------------------------------------------------
@@ -43,7 +44,7 @@ class AccessController < ApplicationController
 
 	def setSession(username)
 		session[:username] = username;
-		redirect_to controller: "home", action: "index";		
+		redirect_to root_path;		
 	end
 	
 	class LadgerHash
