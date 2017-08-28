@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'reports/index'
+
 	get 'access/signIn';
 	get 'access/signOut'
 	post 'access/getAuthentication';
