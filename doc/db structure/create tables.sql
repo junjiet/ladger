@@ -102,3 +102,14 @@ create table loan_type (
 	loan_name varchar(30) not null,
 	constraint loan_type_pk primary key (loan_code)
 );
+
+create table member_loan (
+	loan_id number(9),
+	member_id number(6) not null,
+	loan_code varchar(15) not null,
+	loan_amount number(9,2) not null,
+	loan_term number(2) not null,
+	loan_date datetime,
+	voucher_id number(9),
+	check_number varchar(15)
+);
