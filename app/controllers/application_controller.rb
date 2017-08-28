@@ -8,9 +8,9 @@ class ApplicationController < ActionController::Base
 		@urlBase = getUrlBase;
 
 		#redirection to login screen if not in session:
-		if !(controller_name=='access' && (action_name=='login' || action_name=='getAuthentication')) then
+		if !(controller_name=='access' && (action_name=='signIn' || action_name=='getAuthentication')) then
 			if(session[:username].blank?)
-				redirect_to controller: "access", action: "login";
+				redirect_to controller: "access", action: "signIn";
 			end
 		end
 	end	

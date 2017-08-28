@@ -1,5 +1,5 @@
 class AccessController < ApplicationController
-	def login
+	def signIn
 		
 	end
 
@@ -33,6 +33,9 @@ class AccessController < ApplicationController
 				end
 			end
 		end
+	end
+	def signOut
+
 	end
 
 	#------------------------------------------------------------------
