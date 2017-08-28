@@ -111,5 +111,19 @@ create table member_loan (
 	loan_term number(2) not null,
 	loan_date datetime,
 	voucher_id number(9),
-	check_number varchar(15)
+	check_number varchar(15),
+	constraint member_loan_pk primary key (loan_id),
+	constraint member_loan_member_fk foreign key (member_id)
+		references member(member_id),
+	constraint member_loan_loan_fk foreign key (loan_code)
+		references loan_type(loan_code),
+	constraint member_loan_voucher_fk foreign key (voucher_id)
+		references voucher(voucher_id)
+);
+
+create table official_receipt (
+	or_number varchar(15),
+	or_date datetime,
+	total_amount number(9,2) not null,
+	constraint official_receipt_pk primary key (or_number)
 );
