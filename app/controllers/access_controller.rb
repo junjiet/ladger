@@ -28,6 +28,8 @@ class AccessController < ApplicationController
 				elsif @activeStatus==2 then
 					@authenticated = false;
 					@errorMessage = 'Account password needs to be changed before using the system.';
+				else
+					setSession(username);
 				end
 			end
 		end
@@ -35,6 +37,11 @@ class AccessController < ApplicationController
 
 	#------------------------------------------------------------------
 	private
+
+	def setSession(username)
+		session[:username] = username;
+		redirect_to controller: "home", action: "index";		
+	end
 	
 	class LadgerHash
 		require 'digest';

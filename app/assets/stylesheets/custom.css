@@ -1,15 +1,4 @@
-/*! Adminre v.1.2.0 - custom.css
- *
- * @note : Avoid altering this file. Any enhancement should be done in this file
- * @author : JohnPozy
- * @author URL : http://themeforest.net/user/pampersdry
- */
- 
-/* ----------------------------
- *
- * Your very own modification ;)
- *
- * --------------------------- */
+/* Ladger custom CSS */
 
 /* ----------------------------
  * Color scheme
@@ -23,10 +12,30 @@
 
 #header.navbar, .navbar-brand
 {
-	background:#31572C;
+	background: #31572C;
 	border-bottom: 2px solid #90A955;
 }
 
+/* navbar-nav list items */
+#header.navbar .navbar-toolbar .navbar-nav>li>a:active,
+#header.navbar .navbar-toolbar .navbar-nav>li>a:focus,
+#header.navbar .navbar-toolbar .navbar-nav>li>a:hover {
+	background-color: #90A955;
+	border-bottom: 2px solid #ECF39E;
+}
+#header.navbar .navbar-toolbar .navbar-nav>li.active>a,
+#header.navbar .navbar-toolbar .navbar-nav>li.active>a:active,
+#header.navbar .navbar-toolbar .navbar-nav>li.active>a:focus,
+#header.navbar .navbar-toolbar .navbar-nav>li.active>a:hover,
+#header.navbar .navbar-toolbar .navbar-nav>li.open>a,
+#header.navbar .navbar-toolbar .navbar-nav>li.open>a:active,
+#header.navbar .navbar-toolbar .navbar-nav>li.open>a:focus,
+#header.navbar .navbar-toolbar .navbar-nav>li.open>a:hover {
+	background: #4F772D;
+	border-bottom: 2px solid #90A955;
+}
+
+/* app logo */
 .logo-figure
 {
 	background-image: url("fire-exit.jpg");

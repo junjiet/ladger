@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
 		#redirection to login screen if not in session:
 		if !(controller_name=='access' && (action_name=='login' || action_name=='getAuthentication')) then
-			if(session[:current_user].blank?)
+			if(session[:username].blank?)
 				redirect_to controller: "access", action: "login";
 			end
 		end
