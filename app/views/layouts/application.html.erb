@@ -1,14 +1,67 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Ladger</title>
-    <%= csrf_meta_tags %>
+	<head>
+		<title>Ladger</title>
+		<%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
 
-  <body>
-    <%= yield %>
-  </body>
+	<body>
+		<header id="header" class="navbar navbar-fixed-top">
+			<div class="container-fluid" style="margin-left: 0;">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="javascript:void(0);" style="width:100%;">
+						<h4 style="color:#fff; margin-left: 0; font-size: 28px; font-family: 'Times New Roman', Times, serif;" class="font-alt">Ladger</h4>
+					</a>
+				</div>
+				<!-- START Toolbar -->
+				<div class="navbar-toolbar clearfix">
+					<% if !(session[:username].blank?) then %>
+					<!-- START Left nav -->
+					<ul class="nav navbar-nav navbar-left">
+						<!-- Sidebar shrink -->
+						<li class="hidden-xs hidden-sm">
+							<a href="javascript:void(0);" class="sidebar-minimize" data-toggle="minimize" title="Minimize sidebar">
+								<span class="meta">
+									<span class="icon"></span>
+								</span>
+							</a>
+						</li>
+						<li class="navbar-main hidden-lg hidden-md hidden-sm">
+							<a href="javascript:void(0);" data-toggle="sidebar" data-direction="ltr" rel="tooltip" title="Menu sidebar">
+								<span class="meta">
+									<span class="icon"><i class="ico-paragraph-justify3"></i></span>
+								</span>
+							</a>
+						</li>
+						<!--/ Offcanvas left -->
+					</ul>
+					<!--/ END Left nav -->
+					<!-- START Right nav -->
+					<ul class="nav navbar-nav navbar-right text-right">
+						<li class="dropdown">
+							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"">
+								<span class="meta">
+									<span class="text hidden-xs pl5"><%= session[:username] %></span>
+									<span class="caret"></span>
+								</span>
+							</a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="<%= @urlBase %>/access/signOut"><span class="icon"><i class="ico-exit"></i></span> Sign Out</a></li>
+							</ul>
+						</li>
+						<!--/ Offcanvas right -->
+					</ul>
+					<!--/ END Right nav -->
+					<% end %>
+				</div>
+				<!--/ END Toolbar -->
+			</div>
+		</header>
+		<%= yield %>
+	</body>
 </html>

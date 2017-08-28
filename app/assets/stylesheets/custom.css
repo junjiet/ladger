@@ -1,0 +1,45 @@
+/* Ladger custom CSS */
+
+/* ----------------------------
+ * Color scheme
+ * Generated from Coolors.co
+ * #132A13 Dark Jungle Green
+ * #31572C Mughal Green
+ * #4F772D Sap Green
+ * #90A955 Turtle Green
+ * #ECF39E Key Lime
+ * ---------------------------- */
+
+#header.navbar, .navbar-brand
+{
+	background: #31572C;
+	border-bottom: 2px solid #90A955;
+}
+
+/* navbar-nav list items */
+#header.navbar .navbar-toolbar .navbar-nav>li>a:active,
+#header.navbar .navbar-toolbar .navbar-nav>li>a:focus,
+#header.navbar .navbar-toolbar .navbar-nav>li>a:hover {
+	background-color: #90A955;
+	border-bottom: 2px solid #ECF39E;
+}
+#header.navbar .navbar-toolbar .navbar-nav>li.active>a,
+#header.navbar .navbar-toolbar .navbar-nav>li.active>a:active,
+#header.navbar .navbar-toolbar .navbar-nav>li.active>a:focus,
+#header.navbar .navbar-toolbar .navbar-nav>li.active>a:hover,
+#header.navbar .navbar-toolbar .navbar-nav>li.open>a,
+#header.navbar .navbar-toolbar .navbar-nav>li.open>a:active,
+#header.navbar .navbar-toolbar .navbar-nav>li.open>a:focus,
+#header.navbar .navbar-toolbar .navbar-nav>li.open>a:hover {
+	background: #4F772D;
+	border-bottom: 2px solid #90A955;
+}
+
+/* app logo */
+.logo-figure
+{
+	background-image: url("fire-exit.jpg");
+	width: 100px;
+	height: 100px;
+	background-size: 100px 100px;
+}

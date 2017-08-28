@@ -1,0 +1,52 @@
+<section id="main" role="main">
+	<section class="container-fluid">
+		<div class="row">
+			<div class="col-sm-4 col-sm-offset-4">
+				<div class="text-center" style="margin-bottom:40px;">
+					<span class="logo-figure mb15"></span>
+					<!-- <span class="logo-text inverse"></span> -->
+					<h5 class="semibold text-muted mt-5">A Ledger for Your Coop</h5>
+				</div>
+				<!-- Login form -->
+				<form class="panel" name="form-login" onsubmit="return false;">
+					<div class="panel-body">
+						<div class="alert alert-warning text-center">
+							<span class="semibold text-center">Alpha Version</span>
+						</div>
+						<div class="form-group">
+							<div class="form-stack has-icon pull-left">
+								<input id="txtUsername" name="username" type="text" class="form-control input-lg" placeholder="Username" data-parsley-errors-container="#divError" data-parsley-error-message="Please fill in your username" data-parsley-required="">
+								<i class="ico-user2 form-control-icon"></i>
+							</div>
+							<div class="form-stack has-icon pull-left">
+								<input id="txtPassword" name="password" type="password" class="form-control input-lg" placeholder="Password" data-parsley-errors-container="#divError" data-parsley-error-message="Please fill in your password" data-parsley-required="">
+								<i class="ico-lock2 form-control-icon"></i>
+							</div>
+						</div>
+
+						<div id="divError" class="mb15"></div>
+
+						<div class="form-group nm">
+							<button id="btnSignIn" type="submit" class="btn btn-block btn-success"><span class="semibold">Sign In</span></button>
+						</div>
+					</div>
+				</form>
+				<!-- Login form -->
+			</div>
+		</div>
+	</section>
+</section>
+<script>
+	$(document).ready(function(){
+		$('#txtUsername').focus();
+		$('#btnSignIn').on('click',function(){
+			var username = $('#txtUsername').val();
+			var password = $('#txtPassword').val();
+			$.ajax({
+				url: '<%= @urlBase %>/access/getAuthentication',
+				type: 'POST',
+				data: { username: username, password: password}
+			});
+		});
+	});
+</script>

@@ -1,0 +1,5 @@
+if (<%= @authenticated %>) {
+	console.log('authenticated.');
+} else {
+	showError('#divError','<%= @errorMessage %>');
+}
