@@ -12,7 +12,7 @@
 
 	<body>
 		<header id="header" class="navbar navbar-fixed-top">
-			<div class="container" style="margin-left: 0;">
+			<div class="container-fluid" style="margin-left: 0;">
 				<div class="navbar-header">
 					<a class="navbar-brand" href="javascript:void(0);" style="width:100%;">
 						<h4 style="color:#fff; margin-left: 0; font-size: 28px; font-family: 'Times New Roman', Times, serif;" class="font-alt">Ladger</h4>
@@ -20,11 +20,12 @@
 				</div>
 				<!-- START Toolbar -->
 				<div class="navbar-toolbar clearfix">
+					<% if !(session[:username].blank?) then %>
 					<!-- START Left nav -->
 					<ul class="nav navbar-nav navbar-left">
 						<!-- Sidebar shrink -->
 						<li class="hidden-xs hidden-sm">
-							<a href="javascript:void(0);" class="sidebar-minimize" style="border-bottom: 2px solid rgb(255, 153, 51);" data-toggle="minimize" title="Minimize sidebar">
+							<a href="javascript:void(0);" class="sidebar-minimize" data-toggle="minimize" title="Minimize sidebar">
 								<span class="meta">
 									<span class="icon"></span>
 								</span>
@@ -40,7 +41,6 @@
 						<!--/ Offcanvas left -->
 					</ul>
 					<!--/ END Left nav -->
-					<% if !(session[:username].blank?) then %>
 					<!-- START Right nav -->
 					<ul class="nav navbar-nav navbar-right text-right">
 						<li class="dropdown">
