@@ -88,6 +88,7 @@ create table public_id (
 
 create table member (
 	member_id number(6),
+	active_status number(1) not null,
 	constraint member_pk primary key (member_id)
 );
 
