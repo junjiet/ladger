@@ -6,7 +6,7 @@ select prsn.prsn_id,
         ||', '||prsn.prsn_fname
         ||case when prsn.prsn_fnamesuffix is null then '' else ' '||prsn.prsn_fnamesuffix end
         ||case when prsn.prsn_mname is null then '' else ' '||prsn.prsn_minitial end
-    member_fullname,
+    prsn_fullname,
     prsn_gender,
     prsn_birthdate,
     prsn_civilstatus
