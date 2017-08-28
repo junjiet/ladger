@@ -127,3 +127,21 @@ create table official_receipt (
 	total_amount number(9,2) not null,
 	constraint official_receipt_pk primary key (or_number)
 );
+
+create table payment (
+	payment_id number(9),
+	member_id number(6) not null,
+	voucher_id number(9) not null,
+	or_number varchar(15),
+	amount number(9,2) not null,
+	loan_id number(9),
+	constraint payment_pk primary key (payment_id),
+	constraint payment_member_fk foreign key (member_id)
+		references member(member_id),
+	constraint payment_voucher_fk foreign key (voucher_id)
+		references voucher(voucher_id),
+	constraint payment_or_fk foreign key (or_number)
+		references official_receipt(or_number),
+	constraint payment_loan_fk foreign key (loan_id)
+		references member_loan(loan_id)
+);
