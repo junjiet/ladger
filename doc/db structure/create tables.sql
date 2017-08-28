@@ -77,3 +77,16 @@ create table trail_login (
 	constraint trail_login_username_fk foreign key (username)
 	references user_account(username)
 );
+
+create table public_id (
+	public_id varchar(15),
+	prsn_id number(6) not null,
+	constraint public_id_pk primary key (public_id),
+	constraint public_id_fk foreign key (prsn_id)
+		references person(prsn_id)
+);
+
+create table member (
+	member_id number(6),
+	constraint member_pk primary key (member_id)
+);
