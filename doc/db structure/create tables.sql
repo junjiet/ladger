@@ -90,3 +90,9 @@ create table member (
 	member_id number(6),
 	constraint member_pk primary key (member_id)
 );
+
+create table voucher (
+	voucher_id number(9),
+	voucher_number varchar(15) not null,
+	constraint voucher_pk primary key (voucher_id)
+);
