@@ -96,3 +96,9 @@ create table voucher (
 	voucher_number varchar(15) not null,
 	constraint voucher_pk primary key (voucher_id)
 );
+
+create table loan_type (
+	loan_code varchar(15),
+	loan_name varchar(30) not null,
+	constraint loan_type_pk primary key (loan_code)
+);
