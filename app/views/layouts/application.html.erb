@@ -62,6 +62,55 @@
 				<!--/ END Toolbar -->
 			</div>
 		</header>
+		<% if !(session[:username].blank?) then %>		
+		<aside class="sidebar sidebar-left sidebar-menu">
+			<section class="content slimscroll">
+				<div class="avatarPanel">
+					<h5 class="heading"></h5>
+					<div class="panel-body text-center hidden-sm hidden-xs-sm">
+						<img class="mb5" src=<%= image_url('fire-exit.jpg') %> alt="" height="144" width="144">
+					</div>
+					<h5 class="heading">Main Menu</h5>
+					<ul id="mnuMain" class="topmenu topmenu-responsive">
+						<li id="mnuHome">
+							<a class="tlink" href="<%= @urlBase %>">
+								<span class="figure"><i class="ico-home"></i></span>
+								<span class="text">Home</span>
+							</a>
+						</li>
+						<li id="mnuReports">
+							<a class="tlink" data-toggle="collapse" href="#mnuReportsSub" data-parent="#mnuMain">
+								<span class="figure"><i class="ico-pie6"></i></span>
+								<span class="text">Reports</span>
+								<span class="arrow"></span>
+							</a>
+							<ul id="mnuReportsSub" class="submenu collapse">
+								<li>
+									<a class="ladda-button" href=<%= "#{@urlBase}/reports/index" %> data-style="zoom-out">
+										<span class="text ladda-label">Members List</span>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li id="mnuManagement">
+							<a class="tlink" data-toggle="collapse" href="#mnuManagementSub" data-parent="#mnuMain">
+								<span class="figure"><i class="ico-pie2"></i></span>
+								<span class="text">Management</span>
+								<span class="arrow"></span>
+							</a>
+							<ul id="mnuManagementSub" class="submenu collapse">
+								<li>
+									<a class="ladda-button" href=<%= "#{@urlBase}/reports/index" %> data-style="zoom-out">
+										<span class="text ladda-label">App Constants</span>
+									</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</section>
+		</aside>
+		<% end %>
 		<%= yield %>
 	</body>
 </html>
