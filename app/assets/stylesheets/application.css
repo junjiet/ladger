@@ -10,8 +10,16 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- = require_tree ../../../vendor/assets/stylesheets/.
+ * require_tree ../../../vendor/assets/stylesheets/.
+ *= require select2.min
+ *= require selectize.min
+ *= require jquery-ui.min
+ *= require jquery-ui-timepicker
+ *= require jquery.datatables.min
+ *= require icons/iconfont/style
+ *= require bootstrap.min
  *= require layout.min
+ *= require uielement.min
  *= require_tree .
  *= require_self
  */
