@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'management/members'
+
   get 'reports/index'
 
 	get 'access/signIn';
