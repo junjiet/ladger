@@ -72,7 +72,7 @@
 					</div>
 					<h5 class="heading">Main Menu</h5>
 					<ul id="mnuMain" class="topmenu topmenu-responsive">
-						<li id="mnuHome">
+						<li id="mnuHome" class="<%= controller_name=='home' ? 'open' : '' %>">
 							<a class="tlink" href="<%= @urlBase %>">
 								<span class="figure"><i class="ico-home"></i></span>
 								<span class="text">Home</span>
@@ -92,14 +92,14 @@
 								</li>
 							</ul>
 						</li>
-						<li id="mnuManagement">
+						<li id="mnuManagement" class="<%= controller_name=='management' ? 'open' : '' %>">
 							<a class="tlink" data-toggle="collapse" href="#mnuManagementSub" data-parent="#mnuMain">
 								<span class="figure"><i class="ico-pie2"></i></span>
 								<span class="text">Management</span>
 								<span class="arrow"></span>
 							</a>
-							<ul id="mnuManagementSub" class="submenu collapse">
-								<li>
+							<ul id="mnuManagementSub" class="submenu collapse <%= controller_name=='management' ? 'in' : '' %>">
+								<li class="<%= controller_name=='management' && action_name=='members' ? 'active' : '' %>">
 									<a class="ladda-button" href=<%= "#{@urlBase}/management/members" %> data-style="zoom-out">
 										<span class="text ladda-label">Members</span>
 									</a>
