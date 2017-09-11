@@ -11,15 +11,41 @@
  * It is generally better to create a new file per style scope.
  *
  * require_tree ../../../vendor/assets/stylesheets/.
+ *= require jquery-ui.min
+ *= require jquery.datatables.min
+ *= require layout.min
  *= require select2.min
  *= require selectize.min
- *= require jquery-ui.min
- *= require jquery-ui-timepicker
- *= require jquery.datatables.min
- *= require icons/iconfont/style
  *= require bootstrap.min
- *= require layout.min
+ *= require icons/iconfont/style
+ *= require jquery-ui-timepicker
  *= require uielement.min
- *= require_tree .
+ *= require custom
+ * require_tree .
  *= require_self
  */
+
+/*
+-------------- access
+-------------- admission
+-------------- applicants
+custom
+-------------- department
+-------------- home
+-------------- index
+------ jquery-ui.min
+------ jquery.datatables
+------ layout.min
+-------------- registrar
+-------------- report
+------ select2.min
+------ selectize.min
+-------------- sessions
+-------------- subjects
+application
+------ bootstrap.min
+------ icons/iconfont/style
+------ jquery-ui-timepicker
+jquery.datatables.min
+------ uielement.min
+*/
