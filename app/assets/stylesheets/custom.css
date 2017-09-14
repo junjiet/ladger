@@ -54,3 +54,11 @@
 .pointer-cursor {
 	cursor: pointer;
 }
+
+/* the following is to override settings of .modal-open to retain the page's vertical scrollbar when a modal is opened
+ * credit to a certain flup
+ * url: https://stackoverflow.com/a/25070157
+ */
+.modal-open {
+	overflow: scroll;
+}
