@@ -32,6 +32,12 @@
 										while i<@members.length do
 											rowNumber = rowNumber + 1;
 											member = @members[i];
+											activeStatusName = 'Active';
+											activeCommand = 'Deactivate';
+											if member.active_status==0 then
+												activeStatusName = 'Inactive';
+												activeCommand = 'Activate';
+											end
 											%>
 											<tr>
 												<td class="text-right"><%= rowNumber %></td>
@@ -40,9 +46,9 @@
 												<td class="text-center"><%= member.prsn_gender %></td>
 												<td class="text-center">
 													<div class="btn-group mb0">
-														<button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown">Active <span class="caret"></span></button>
+														<button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown"><%= activeStatusName %> <span class="caret"></span></button>
 														<ul class="dropdown-menu" role="menu">
-															<li><a href="javascript:void(0);">Deactivate</a></li>
+															<li><a href="javascript:void(0);"><%= activeCommand %></a></li>
 														</ul>
 													</div>
 												</td>
