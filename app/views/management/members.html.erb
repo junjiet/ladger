@@ -105,7 +105,6 @@
 	<script>
 		$(document).ready(function(){
 			function setData(personID,dataField,dataValue) {
-				console.log('updating..')
 				$.ajax({
 					url: '<%= @urlBase %>/management/setData',
 					type : 'POST',
@@ -119,6 +118,8 @@
 
 			//update member status:
 			$('td.member-status li a').on('click',function(){
+				$(this).closest('.member-row').find('.indicator').addClass('show');
+
 				var personID = $(this).closest('.member-row').attr('data-person-id');
 				var activeNew = $(this).attr('data-active-status');
 				setData(personID,'active_status',activeNew);
