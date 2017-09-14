@@ -1,5 +1,4 @@
 function setupDataTable(tableID) {
-	console.log('setting up '+tableID+' as datatable..');
 	var tableWrapperID = tableID+'_wrapper';
 	var filterID = tableID+'_filter';
 
