@@ -27,13 +27,25 @@ class ManagementController < ApplicationController
 	end
 
 	def setData
-		personID = params[:prsn_id];
+		@personID = params[:prsn_id];
 		dataField = params[:data_field];
 
 		@errorCode = nil;
 		if (dataField=='active_status')
-			newStatus = params[:data_value];
-			setMemberData(personID,dataField,newStatus);
+			@newStatus = params[:data_value].to_i;
+			setMemberData(@personID,dataField,@newStatus);
+			@activeStatusName = 'Active';
+			@activeCommand = 'Deactivate';
+			@activeNext = 0;
+			@activeStatusButton = 'btn-success';
+			@activeStatusButtonPrevious = 'btn-default';
+			if @newStatus==0 then
+				@activeStatusName = 'Inactive';
+				@activeCommand = 'Activate';
+				@activeNext = 1;
+				@activeStatusButton = 'btn-default';
+				@activeStatusButtonPrevious = 'btn-success';
+			end
 		end
 	end
 

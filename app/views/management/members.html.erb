@@ -35,10 +35,12 @@
 											activeStatusName = 'Active';
 											activeCommand = 'Deactivate';
 											activeNext = 0;
+											activeStatusButton = 'btn-success';
 											if member.active_status==0 then
 												activeStatusName = 'Inactive';
 												activeCommand = 'Activate';
 												activeNext = 1;
+												activeStatusButton = 'btn-default';
 											end
 											%>
 											<tr class="member-row" data-person-id="<%= member.prsn_id %>">
@@ -46,13 +48,14 @@
 												<td class="member-name"><%= member.prsn_fullname %></td>
 												<td class="employee-id"><%= member.employee_id %></td>
 												<td class="text-center"><%= member.prsn_gender %></td>
-												<td class="member-status text-center" data-active-status="<%= member.active_status %>">
+												<td class="member-status text-center panel" data-active-status="<%= member.active_status %>">
 													<div class="btn-group mb0">
-														<button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown"><%= activeStatusName %> <span class="caret"></span></button>
+														<button type="button" class="btn btn-xs <%= activeStatusButton %> dropdown-toggle" data-toggle="dropdown"><span class="active-status-name"><%= activeStatusName %></span> <span class="caret"></span></button>
 														<ul class="dropdown-menu" role="menu">
-															<li><a href="javascript:void(0);" data-active-status="<%= activeNext %>"><%= activeCommand %></a></li>
+															<li><a class="active-status-next" href="javascript:void(0);" data-active-status="<%= activeNext %>"><%= activeCommand %></a></li>
 														</ul>
 													</div>
+													<div class="indicator"><span class="spinner spinner8"></span></div>
 												</td>
 											</tr>
 											<% i=i+1;

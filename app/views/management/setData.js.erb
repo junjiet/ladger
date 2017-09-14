@@ -1,1 +1,8 @@
 console.log('setData returned.');
+var memberRow = $('#tableMembers tr.member-row[data-person-id="<%= @personID %>"');
+memberRow.find('.member-status').attr('data-active-status','<%= @newStatus %>');
+memberRow.find('.member-status button').addClass("<%= @activeStatusButton %>");
+memberRow.find('.member-status button').removeClass("<%= @activeStatusButtonPrevious %>");
+memberRow.find('.active-status-name').html("<%= @activeStatusName %>");
+memberRow.find('li a.active-status-next').attr('data-active-status',"<%= @activeNext %>");
+memberRow.find('li a.active-status-next').html("<%= @activeCommand %>");
