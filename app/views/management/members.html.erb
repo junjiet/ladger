@@ -53,13 +53,33 @@
 		</div>
 	</div>
 	<div id="modalChangeStatus" class="modal fade" role="dialog">
-		<div class="modal-dialog modal-sm">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title">Change Status</h4>
-				</div>
-				<div class="modal-body">
+		<div class="vertical-alignment-helper">
+			<div class="modal-dialog modal-sm vertical-align-center">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title">Change Status</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<div class="row">
+								<label class="col-sm-3 control-label">Status</label>
+								<div class="col-sm-9">
+									<div class="radio custom-radio custom-radio-primary mb10">  
+										<input type="radio" id="rdoActive" value="1" name="rdo_activate_status">  
+										<label for="rdoActive">&nbsp;&nbsp;Active</label>   
+									</div>
+									<div class="radio custom-radio custom-radio-primary">  
+										<input type="radio" id="rdoInactive" value="0" name="rdo_activate_status">  
+										<label for="rdoInactive">&nbsp;&nbsp;Inactive</label>   
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn-cancel btn btn-default" data-dismiss="modal">Cancel</button>
+					</div>
 				</div>
 			</div>
 		</div>
