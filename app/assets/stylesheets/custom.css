@@ -73,6 +73,10 @@
 	padding: 5px;
 }
 
+.dropdown-menu {
+	min-width: 100px;
+}
+
 /* the following 3 classes added to center vertically the specified modals
  * credits to a certain Rens de Nobel
  * url: https://stackoverflow.com/a/24829651
