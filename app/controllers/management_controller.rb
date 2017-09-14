@@ -26,6 +26,17 @@ class ManagementController < ApplicationController
 		end
 	end
 
+	def setData
+		personID = params[:prsn_id];
+		dataField = params[:data_field];
+
+		@errorCode = nil;
+		if (dataField=='active_status')
+			newStatus = params[:data_value];
+			setMemberData(personID,dataField,newStatus);
+		end
+	end
+
 	# -----------------------------------------------------------------
 	private
 	def getMemberData(personID,dataField)

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  get 'management/members'
+	get 'management/members'
 
-  get 'reports/index'
+	get 'reports/index'
 
 	get 'access/signIn';
 	get 'access/signOut'
@@ -10,5 +10,7 @@ Rails.application.routes.draw do
 	get 'home/index';
 
 	root 'home#index';
+
+	post 'management/setData';
 	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -34,21 +34,23 @@
 											member = @members[i];
 											activeStatusName = 'Active';
 											activeCommand = 'Deactivate';
+											activeNext = 0;
 											if member.active_status==0 then
 												activeStatusName = 'Inactive';
 												activeCommand = 'Activate';
+												activeNext = 1;
 											end
 											%>
-											<tr>
+											<tr class="member-row" data-person-id="<%= member.prsn_id %>">
 												<td class="text-right"><%= rowNumber %></td>
 												<td class="member-name"><%= member.prsn_fullname %></td>
-												<td class="employee-id" prsn-id="<%= member.prsn_id %>"><%= member.employee_id %></td>
+												<td class="employee-id"><%= member.employee_id %></td>
 												<td class="text-center"><%= member.prsn_gender %></td>
-												<td class="text-center">
+												<td class="member-status text-center" data-active-status="<%= member.active_status %>">
 													<div class="btn-group mb0">
 														<button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown"><%= activeStatusName %> <span class="caret"></span></button>
 														<ul class="dropdown-menu" role="menu">
-															<li><a href="javascript:void(0);"><%= activeCommand %></a></li>
+															<li><a href="javascript:void(0);" data-active-status="<%= activeNext %>"><%= activeCommand %></a></li>
 														</ul>
 													</div>
 												</td>
@@ -99,6 +101,26 @@
 	</div>
 	<script>
 		$(document).ready(function(){
+			function setData(personID,dataField,dataValue) {
+				console.log('updating..')
+				$.ajax({
+					url: '<%= @urlBase %>/management/setData',
+					type : 'POST',
+					data : {
+						prsn_id : personID,
+						data_field : dataField,
+						data_value : dataValue
+					}
+				});
+			}
+
+			//update member status:
+			$('td.member-status li a').on('click',function(){
+				var personID = $(this).closest('.member-row').attr('data-person-id');
+				var activeNew = $(this).attr('data-active-status');
+				setData(personID,'active_status',activeNew);
+			});
+
 			//set #tableMembers as data table:
 			var unitTable = $('#tableMembers').dataTable({
 				"aoColumnDefs": [{'bSortable': false, 'aTargets': [0,3,4]}],
