@@ -44,10 +44,10 @@
 											end
 											%>
 											<tr class="member-row" data-person-id="<%= member.prsn_id %>">
-												<td class="text-right"><%= rowNumber %></td>
-												<td class="member-name"><%= member.prsn_fullname %></td>
-												<td class="employee-id"><%= member.employee_id %></td>
-												<td class="text-center"><%= member.prsn_gender %></td>
+												<td class="text-right pointer-cursor member-info"><%= rowNumber %></td>
+												<td class="member-name pointer-cursor member-info"><%= member.prsn_fullname %></td>
+												<td class="employee-id pointer-cursor member-info"><%= member.employee_id %></td>
+												<td class="text-center pointer-cursor member-info"><%= member.prsn_gender %></td>
 												<td class="member-status text-center panel" data-active-status="<%= member.active_status %>">
 													<div class="btn-group mb0">
 														<button type="button" class="btn btn-xs <%= activeStatusButton %> dropdown-toggle" data-toggle="dropdown"><span class="active-status-name"><%= activeStatusName %></span> <span class="caret"></span></button>
@@ -65,6 +65,26 @@
 								</div>
 							</div>
 						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="modalMemberPersonalInfo" class="modal fade" role="dialog">
+		<div class="vertical-alignment-helper">
+			<div class="modal-dialog vertical-align-center">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title">Member Personal Information</h4>
+					</div>
+					<div class="modal-body">
+						<div class="row">
+							
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn-cancel btn btn-default" data-dismiss="modal">Cancel</button>
 					</div>
 				</div>
 			</div>
@@ -131,6 +151,13 @@
 				"iDisplayLength" : 10
 			});
 			setupDataTable('#tableMembers');
+
+			//---------------------------------------------------------
+			//EVENTS:
+			$('td.member-info').on('click',function(){
+				var memberRow = $(this).closest('td.member-row');
+				$('#modalMemberPersonalInfo').modal({backdrop: 'static'});
+			});
 		});
 	</script>
 </section>
