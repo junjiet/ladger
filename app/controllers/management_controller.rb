@@ -38,4 +38,10 @@ class ManagementController < ApplicationController
 
 		return data;
 	end
+
+	def setMemberData(personID,dataField,dataValue)
+		member = Member.find_by(member_id: personID);
+		member[dataField] = dataValue;
+		member.save;
+	end
 end
