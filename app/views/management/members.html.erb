@@ -35,10 +35,10 @@
 											%>
 											<tr>
 												<td class="text-right"><%= rowNumber %></td>
-												<td class='member-name'><%= member.prsn_fullname %></td>
+												<td class="member-name"><%= member.prsn_fullname %></td>
 												<td class="employee-id" prsn-id="<%= member.prsn_id %>"><%= member.employee_id %></td>
 												<td class="text-center"><%= member.prsn_gender %></td>
-												<td class="text-center"><%= member.active_status %></td>
+												<td class="text-center pointer-cursor" data-toggle="modal" data-target="#modalChangeStatus" data-backdrop="static"><%= member.active_status %></td>
 											</tr>
 											<% i=i+1;
 										end %>
@@ -48,6 +48,18 @@
 							</div>
 						</div>
 					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="modalChangeStatus" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">Change Status</h4>
+				</div>
+				<div class="modal-body">
 				</div>
 			</div>
 		</div>
