@@ -38,7 +38,14 @@
 												<td class="member-name"><%= member.prsn_fullname %></td>
 												<td class="employee-id" prsn-id="<%= member.prsn_id %>"><%= member.employee_id %></td>
 												<td class="text-center"><%= member.prsn_gender %></td>
-												<td class="text-center pointer-cursor" data-toggle="modal" data-target="#modalChangeStatus" data-backdrop="static"><%= member.active_status %></td>
+												<td class="text-center">
+													<div class="btn-group mb0">
+														<button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown">Active <span class="caret"></span></button>
+														<ul class="dropdown-menu" role="menu">
+															<li><a href="javascript:void(0);">Deactivate</a></li>
+														</ul>
+													</div>
+												</td>
 											</tr>
 											<% i=i+1;
 										end %>
