@@ -49,3 +49,8 @@
 .panel-default > .panel-heading {
 	background-color: #90A955;
 }
+
+/* pointer */
+.pointer-cursor {
+	cursor: pointer;
+}
