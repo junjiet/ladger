@@ -43,3 +43,9 @@
 	height: 100px;
 	background-size: 100px 100px;
 }
+
+/* default panel headers */
+
+.panel-default > .panel-heading {
+	background-color: #90A955;
+}
