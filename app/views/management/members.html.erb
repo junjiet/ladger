@@ -19,14 +19,29 @@
 										<thead>
 											<tr>
 												<th class="text-right">#</th>
-												<th>ID Number</th>
 												<th>Member Name</th>
+												<th>Employee ID</th>
 												<th class="text-center">Gender</th>
 												<th class="text-center">Active Status</th>
 											</tr>
 										</thead>
 										<tbody>
-											
+										<%
+										i=0
+										rowNumber = 0;
+										while i<@members.length do
+											rowNumber = rowNumber + 1;
+											member = @members[i];
+											%>
+											<tr>
+												<td class="text-right"><%= rowNumber %></td>
+												<td class='member-name'><%= member.prsn_fullname %></td>
+												<td class="employee-id" prsn-id="<%= member.prsn_id %>"><%= member.employee_id %></td>
+												<td class="text-center"><%= member.prsn_gender %></td>
+												<td class="text-center"><%= member.active_status %></td>
+											</tr>
+											<% i=i+1;
+										end %>
 										</tbody>
 									</table>
 								</div>
@@ -37,4 +52,14 @@
 			</div>
 		</div>
 	</div>
+	<script>
+		$(document).ready(function(){
+			//set #tableMembers as data table:
+			var unitTable = $('#tableMembers').dataTable({
+				"aoColumnDefs": [{'bSortable': false, 'aTargets': [0,3,4]}],
+				"iDisplayLength" : 10
+			});
+			setupDataTable('#tableMembers');
+		});
+	</script>
 </section>

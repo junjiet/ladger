@@ -1,4 +1,8 @@
-function setupDataTable(tableWrapperID,filterID) {
+function setupDataTable(tableID) {
+	console.log('setting up '+tableID+' as datatable..');
+	var tableWrapperID = tableID+'_wrapper';
+	var filterID = tableID+'_filter';
+
 	//setup datatable toolbar:
 	var dataTableTopTools = $(filterID).closest('.row');
 	var dataTableBottomTools = $(tableWrapperID+' .dataTables_paginate').closest('.row');
