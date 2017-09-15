@@ -6,4 +6,15 @@
 	<% else %>
 		$('#<%= @elementID %>').val('<%= @data %>');
 	<% end %>
+	$('#<%= @elementID %>').attr('data-refreshed',true);
 <% end %>
+
+var notRefreshed = 0;
+$('#modalMemberPersonalInfo .data-display').each(function(){
+	if ($(this).attr('data-refreshed')=='false') {
+		notRefreshed++;
+	}
+});
+if (notRefreshed==0) {
+	$('#modalMemberPersonalInfo .indicator').removeClass('show');
+}

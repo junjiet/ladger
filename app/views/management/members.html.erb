@@ -106,10 +106,10 @@
 										<div class="col-sm-8">
 											<div class="row">
 												<div class="col-xs-9 pr5">
-													<input id="txtLname" name="lname" type="text" class="form-control data-display" placeholder="last name" data-group="person" data-refresh="prsn_lname">
+													<input id="txtLname" name="lname" type="text" class="form-control data-display" placeholder="last name" data-group="person" data-refresh="prsn_lname" data-refreshed=false>
 												</div>
 												<div class="col-xs-3 pl5">
-													<input id="txtLnamesuffix" name="lnamesuffix" type="text" class="form-control data-display" placeholder="suffix" data-group="person" data-refresh="prsn_lnamesuffix">
+													<input id="txtLnamesuffix" name="lnamesuffix" type="text" class="form-control data-display" placeholder="suffix" data-group="person" data-refresh="prsn_lnamesuffix" data-refreshed=false>
 												</div>
 											</div>
 										</div>
@@ -119,10 +119,10 @@
 										<div class="col-sm-8">
 											<div class="row">
 												<div class="col-xs-9 pr5">
-													<input id="txtFname" name="fname" type="text" class="form-control data-display" placeholder="first name" data-group="person" data-refresh="prsn_fname">
+													<input id="txtFname" name="fname" type="text" class="form-control data-display" placeholder="first name" data-group="person" data-refresh="prsn_fname" data-refreshed=false>
 												</div>
 												<div class="col-xs-3 pl5">
-													<input id="txtFnamesuffix" name="fnamesuffix" type="text" class="form-control data-display" placeholder="suffix" data-group="person" data-refresh="prsn_fnamesuffix">
+													<input id="txtFnamesuffix" name="fnamesuffix" type="text" class="form-control data-display" placeholder="suffix" data-group="person" data-refresh="prsn_fnamesuffix" data-refreshed=false>
 												</div>
 											</div>
 										</div>
@@ -132,10 +132,10 @@
 										<div class="col-sm-8">
 											<div class="row">
 												<div class="col-xs-9 pr5">
-													<input id="txtMname" name="mname" type="text" class="form-control data-display" placeholder="middle name" data-group="person" data-refresh="prsn_mname">
+													<input id="txtMname" name="mname" type="text" class="form-control data-display" placeholder="middle name" data-group="person" data-refresh="prsn_mname" data-refreshed=false>
 												</div>
 												<div class="col-xs-3 pl5">
-													<input id="txtMinitial" name="minitial" type="text" class="form-control data-display" placeholder="middle initial" data-group="person" data-refresh="prsn_minitial">
+													<input id="txtMinitial" name="minitial" type="text" class="form-control data-display" placeholder="middle initial" data-group="person" data-refresh="prsn_minitial" data-refreshed=false>
 												</div>
 											</div>
 										</div>
@@ -148,6 +148,7 @@
 				<div class="modal-footer">
 					<button type="button" class="btn-cancel btn btn-default" data-dismiss="modal">Cancel</button>
 				</div>
+				<div class="indicator show"><span class="spinner spinner8"></span></div>
 			</div>
 		</div>
 	</div>
@@ -261,6 +262,13 @@
 
 				$('#modalMemberPersonalInfo').modal({backdrop: 'static'});
 			});
+			$('#modalMemberPersonalInfo').on('hide.bs.modal',function(){
+				//reset .data-display refreshed status
+				$('#modalMemberPersonalInfo .data-display').attr('data-refreshed',false);
+
+				//return loading indicator
+				$('#modalMemberPersonalInfo .indicator').addClass('show');
+			})
 		});
 	</script>
 </section>
