@@ -106,7 +106,7 @@
 										<div class="col-sm-8">
 											<div class="row">
 												<div class="col-xs-9 pr5">
-													<input id="txtLname" name="lname" type="text" class="form-control" placeholder="last name">
+													<input id="txtLname" name="lname" type="text" class="form-control data-display" placeholder="last name" data-group="person" data-refresh="prsn_lname">
 												</div>
 												<div class="col-xs-3 pl5">
 													<input id="txtLnamesuffix" name="lnamesuffix" type="text" class="form-control" placeholder="suffix">
@@ -185,6 +185,24 @@
 	</div>
 	<script>
 		$(document).ready(function(){
+			function refreshData(personID,element,elementType) {
+				var dataGroup = $(element).data('group');
+				var dataField = $(element).data('refresh');
+				var dataFilter = $(element).attr('data-filter');
+				var elementID = $(element).attr('id');
+
+				$.ajax({
+					url: '<%= @urlBase %>/management/getData',
+					type : 'GET',
+					data : { prsn_id : personID,
+						data_group : dataGroup,
+						data_field : dataField,
+						data_filter : dataFilter,
+						element_id : elementID,
+						element_type : elementType
+					}
+				});
+			}
 			function setData(personID,dataField,dataValue) {
 				$.ajax({
 					url: '<%= @urlBase %>/management/setData',
@@ -222,8 +240,25 @@
 			//EVENTS:
 			$(document).on('click','td.member-info',function(){
 				var memberRow = $(this).closest('tr.member-row');
+				var personID = memberRow.attr('data-person-id');
 				$('#divMemberWidget .member-name').html(memberRow.find('.member-name').html());
 				$('#divMemberWidget .employee-id').html(memberRow.find('.employee-id').html());
+				
+				// //refresh data displayed:
+				$('#modalMemberPersonalInfo').find('input.data-display').each(function(){
+					refreshData(personID,this,'input');
+				});
+				// $('#modalMemberPersonalInfo').find('input.data-check').each(function(){
+				// 	refreshData(personID,this,'checkbox');
+				// });
+				// $('#modalMemberPersonalInfo').find('select.selectized').each(function(){
+				// 	if ($(this).data('refresh')=='addr_town/city') {
+				// 		refreshData(personID,this,'selectize-text');
+				// 	} else {
+				// 		refreshData(personID,this,'selectize');
+				// 	}
+				// });
+
 				$('#modalMemberPersonalInfo').modal({backdrop: 'static'});
 			});
 		});

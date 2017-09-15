@@ -1,0 +1,9 @@
+<% if @elementType=='input' %>
+	<% if @dataType=='datetime'
+		dateFormat = "%m/%d/%Y";
+		%>
+		$('#<%= @elementID %>').val('<%= @data.strftime(dateFormat) %>');
+	<% else %>
+		$('#<%= @elementID %>').val('<%= @data %>');
+	<% end %>
+<% end %>
