@@ -10,8 +10,9 @@ class ManagementController < ApplicationController
 		@elementID = params[:element_id];
 		@elementType = params[:element_type];
 
-		if (dataGroup=='member')
-			@data = getMemberData(personID,dataField);
+		if (dataGroup=='member' || dataGroup=='person')
+			@data = (dataGroup=='person'
+				? getPersonData(personID,dataField) : getMemberData(personID,dataField));
 			if (@data==nil)
 				@dataType = 'string';
 			else
