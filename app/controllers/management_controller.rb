@@ -62,6 +62,17 @@ class ManagementController < ApplicationController
 		return data;
 	end
 
+	def getPersonData(personID,dataField)
+		personInfo = View_person.where('prsn_id=?',personID);
+
+		data = nil;
+		if (personInfo.length>0)
+			data = personInfo[0][dataField];
+		end
+
+		return data;
+	end
+
 	def setMemberData(personID,dataField,dataValue)
 		member = Member.find_by(member_id: personID);
 		member[dataField] = dataValue;
