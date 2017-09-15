@@ -3,7 +3,7 @@ class ManagementController < ApplicationController
 		@members = View_member.order('prsn_fullname');
 	end
 
-	def refreshData
+	def getData
 		personID = params[:prsn_id];
 		dataGroup = params[:data_group];
 		dataField = params[:data_field];
