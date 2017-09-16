@@ -80,7 +80,7 @@
 				<div class="modal-body">
 					<div class="row">
 						<div class="col-sm-12">
-							<div id="divMemberWidget" class="widget panel">
+							<div id="divMemberWidget" class="widget panel" data-person-id="">
 								<div class="panel-body">
 									<ul class="list-table">
 										<li style="width: 70px;">
@@ -245,6 +245,7 @@
 				var memberRow = $(this).closest('tr.member-row');
 				var personID = memberRow.attr('data-person-id');
 
+				$('#divMemberWidget').attr('data-person-id',personID);
 				$('#modalMemberPersonalInfo').modal({backdrop: 'static'});
 
 				$.ajax({
@@ -261,6 +262,33 @@
 				//return loading indicator
 				$('#modalMemberPersonalInfo .indicator').addClass('show');
 			})
+
+			$('#btnSaveMemberPersonalInfo').on('click',function(){
+				$('#modalMemberPersonalInfo .indicator').addClass('show');
+
+				var personID = $('#divMemberWidget').attr('data-person-id');
+				var newLname = $('#txtLname').val();
+				var newLnamesuffix = $('#txtLnamesuffix').val();
+				var newFname = $('#txtFname').val();
+				var newFnamesuffix = $('#txtFnamesuffix').val();
+				var newMname = $('#txtMname').val();
+				var newMinitial = $('#txtMinitial').val();
+
+				$.ajax({
+					url: '<%= @urlBase %>/management/setMemberInfo',
+					type: 'POST',
+					data: { prsn_id: personID,
+						prsn_lname: newLname,
+						prsn_lnamesuffix: newLnamesuffix,
+						prsn_fname: newFname,
+						prsn_fnamesuffix: newFnamesuffix,
+						prsn_mname: newMname,
+						prsn_minitial: newMinitial },
+					success: function() {
+						$('#modalMemberPersonalInfo').modal('hide');
+					}
+				});
+			});
 		});
 	</script>
 </section>

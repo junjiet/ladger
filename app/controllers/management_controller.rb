@@ -9,6 +9,29 @@ class ManagementController < ApplicationController
 		@memberInfo = View_member.where('prsn_id=?',personID);
 	end
 
+	def setMemberInfo
+		personID = params[:prsn_id];
+		person = Person.find_by!(prsn_id: personID);
+
+		prsnLnamesuffix = params[:prsn_lnamesuffix].strip;
+		prsnLnamesuffix = nil if prsnLnamesuffix=='';
+		prsnFnamesuffix = params[:prsn_fnamesuffix].strip;
+		prsnFnamesuffix = nil if prsnFnamesuffix=='';
+		prsnMname = params[:prsn_mname].strip;
+		prsnMname = nil if prsnMname=='';
+		prsnMinitial = params[:prsn_minitial].strip;
+		prsnMinitial = nil if prsnMinitial=='';
+
+		person.prsn_lname = params[:prsn_lname].strip;
+		person.prsn_lnamesuffix = prsnLnamesuffix;
+		person.prsn_fname = params[:prsn_fname].strip;
+		person.prsn_fnamesuffix = prsnFnamesuffix;
+		person.prsn_mname = prsnMname;
+		person.prsn_minitial = prsnMinitial;
+
+		person.save!;
+	end
+
 	def getData
 		personID = params[:prsn_id];
 		dataGroup = params[:data_group];
