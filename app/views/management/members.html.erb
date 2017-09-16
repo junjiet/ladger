@@ -242,25 +242,14 @@
 			$(document).on('click','td.member-info',function(){
 				var memberRow = $(this).closest('tr.member-row');
 				var personID = memberRow.attr('data-person-id');
-				$('#divMemberWidget .member-name').html(memberRow.find('.member-name').html());
-				$('#divMemberWidget .employee-id').html(memberRow.find('.employee-id').html());
-				
-				// //refresh data displayed:
-				$('#modalMemberPersonalInfo').find('input.data-display').each(function(){
-					refreshData(personID,this,'input');
-				});
-				// $('#modalMemberPersonalInfo').find('input.data-check').each(function(){
-				// 	refreshData(personID,this,'checkbox');
-				// });
-				// $('#modalMemberPersonalInfo').find('select.selectized').each(function(){
-				// 	if ($(this).data('refresh')=='addr_town/city') {
-				// 		refreshData(personID,this,'selectize-text');
-				// 	} else {
-				// 		refreshData(personID,this,'selectize');
-				// 	}
-				// });
 
 				$('#modalMemberPersonalInfo').modal({backdrop: 'static'});
+
+				$.ajax({
+					url: '<%= @urlBase %>/management/getMemberInfo',
+					type : 'GET',
+					data : { prsn_id : personID }
+				});
 			});
 			$('#modalMemberPersonalInfo').on('hide.bs.modal',function(){
 				//reset .data-display refreshed status

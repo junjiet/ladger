@@ -1,0 +1,13 @@
+<% if @memberInfo.length>0 && @personInfo.length>0 then %>
+$('#divMemberWidget .member-name').html('<%= @personInfo[0].prsn_fullname %>');
+$('#divMemberWidget .employee-id').html('<%= @memberInfo[0].employee_id %>');
+
+$('#txtLname').val('<%= @personInfo[0].prsn_lname %>');
+$('#txtLnamesuffix').val('<%= @personInfo[0].prsn_lnamesuffix %>');
+$('#txtFname').val('<%= @personInfo[0].prsn_fname %>');
+$('#txtFnamesuffix').val('<%= @personInfo[0].prsn_fnamesuffix %>');
+$('#txtMname').val('<%= @personInfo[0].prsn_mname %>');
+$('#txtMinitial').val('<%= @personInfo[0].prsn_minitial %>');
+
+$('#modalMemberPersonalInfo .indicator').removeClass('show');
+<% end %>

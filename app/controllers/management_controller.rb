@@ -5,8 +5,8 @@ class ManagementController < ApplicationController
 
 	def getMemberInfo
 		personID = params[:prsn_id];
-		@personInfo = View_person.find_by(prsn_id: personID);
-		@memberInfo = View_member.find_by(prsn_id: personID);
+		@personInfo = View_person.where('prsn_id=?',personID);
+		@memberInfo = View_member.where('prsn_id=?',personID);
 	end
 
 	def getData
