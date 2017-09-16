@@ -101,3 +101,12 @@
     margin: 0 auto;
     pointer-events: all;
 }
+
+/* to override layout.min css */
+.sidebar .topmenu li>.submenu li.active:after {
+	background-color: #90A955;
+}
+.sidebar .topmenu li.active a>.figure>[class*=" ico-"],
+.sidebar .topmenu li.active a>.figure>[class^=ico-] {
+	color: #90A955;
+}
