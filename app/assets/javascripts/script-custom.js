@@ -38,3 +38,29 @@ function showError(divAlertContainerID,errorMessage) {
 	}
 	setTimeout(function () {$(divAlertContainerID+' .alert').removeClass("animation animating shake");},1500);
 }
+
+function activateMenu(currentController,currentAction) {
+	$('#mnuMain>li').each(function(){
+		var controller = $(this).attr('controller');
+		if (currentController==controller) {
+			$(this).addClass('active open');
+
+			var subMenu = $(this).find('ul');
+			subMenu.addClass('in');
+			subMenu.find('li').each(function(){
+				var action = $(this).attr('action');
+				if (currentAction==action) {
+					$(this).addClass('active');
+				} else { $(this).removeClass('active'); }
+			});
+		} else {
+			$(this).removeClass('active open');
+
+			var subMenu = $(this).find('ul');
+			subMenu.removeClass('in');
+			subMenu.find('li').each(function(){
+				$(this).removeClass('active');
+			});
+		}
+	});
+}

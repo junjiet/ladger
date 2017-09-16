@@ -72,34 +72,34 @@
 					</div>
 					<h5 class="heading">Main Menu</h5>
 					<ul id="mnuMain" class="topmenu topmenu-responsive">
-						<li id="mnuHome" class="<%= controller_name=='home' ? 'open' : '' %>">
+						<li id="mnuHome" controller="home">
 							<a class="tlink" href="<%= @urlBase %>">
 								<span class="figure"><i class="ico-home6"></i></span>
 								<span class="text">Home</span>
 							</a>
 						</li>
-						<li id="mnuReports">
+						<li id="mnuReports" controller="reports">
 							<a class="tlink" data-toggle="collapse" href="#mnuReportsSub" data-parent="#mnuMain">
 								<span class="figure"><i class="ico-bar-chart"></i></span>
 								<span class="text">Reports</span>
 								<span class="arrow"></span>
 							</a>
 							<ul id="mnuReportsSub" class="submenu collapse">
-								<li>
+								<li action="index">
 									<a class="ladda-button" href=<%= "#{@urlBase}/reports/index" %> data-style="zoom-out">
 										<span class="text ladda-label">Members List</span>
 									</a>
 								</li>
 							</ul>
 						</li>
-						<li id="mnuManagement" class="<%= controller_name=='management' ? 'open' : '' %>">
+						<li id="mnuManagement" controller="management">
 							<a class="tlink" data-toggle="collapse" href="#mnuManagementSub" data-parent="#mnuMain">
 								<span class="figure"><i class="ico-cogs2"></i></span>
 								<span class="text">Management</span>
 								<span class="arrow"></span>
 							</a>
-							<ul id="mnuManagementSub" class="submenu collapse <%= controller_name=='management' ? 'in' : '' %>">
-								<li class="<%= controller_name=='management' && action_name=='members' ? 'active' : '' %>">
+							<ul id="mnuManagementSub" class="submenu collapse">
+								<li action="members">
 									<a class="ladda-button" href=<%= "#{@urlBase}/management/members" %> data-style="zoom-out">
 										<span class="text ladda-label">Members</span>
 									</a>
@@ -112,5 +112,8 @@
 		</aside>
 		<% end %>
 		<%= yield %>
+		<script>
+			activateMenu("<%= controller_name %>","<%= action_name %>");
+		</script>
 	</body>
 </html>
