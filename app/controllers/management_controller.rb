@@ -3,9 +3,10 @@ class ManagementController < ApplicationController
 		@members = View_member.order('prsn_fullname');
 	end
 
-	def getPersonInfo
+	def getMemberInfo
 		personID = params[:prsn_id];
 		@personInfo = View_person.find_by(prsn_id: personID);
+		@memberInfo = View_member.find_by(prsn_id: personID);
 	end
 
 	def getData
