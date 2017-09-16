@@ -33,7 +33,7 @@
 
 //= require select2.full.min
 
-//= require app.min
+// require app.min
 
 //= require script-custom
 //= require_tree .
