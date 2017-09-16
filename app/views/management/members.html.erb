@@ -251,7 +251,10 @@
 				$.ajax({
 					url: '<%= @urlBase %>/management/getMemberInfo',
 					type : 'GET',
-					data : { prsn_id : personID }
+					data : { prsn_id : personID },
+					success : function() {
+						$('#txtLname').focus();
+					}
 				});
 			});
 			
