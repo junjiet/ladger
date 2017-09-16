@@ -113,7 +113,9 @@
 		<% end %>
 		<%= yield %>
 		<script>
-			activateMenu("<%= controller_name %>","<%= action_name %>");
+			$(document).ready(function(){
+				activateMenu("<%= controller_name %>","<%= action_name %>");
+			});
 		</script>
 	</body>
 </html>

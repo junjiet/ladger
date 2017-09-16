@@ -239,6 +239,7 @@
 
 			//---------------------------------------------------------
 			//EVENTS:
+			$(document).off('click','td.member-info');
 			$(document).on('click','td.member-info',function(){
 				var memberRow = $(this).closest('tr.member-row');
 				var personID = memberRow.attr('data-person-id');
@@ -251,6 +252,7 @@
 					data : { prsn_id : personID }
 				});
 			});
+			
 			$('#modalMemberPersonalInfo').on('hide.bs.modal',function(){
 				//reset .data-display refreshed status
 				$('#modalMemberPersonalInfo .data-display').attr('data-refreshed',false);
