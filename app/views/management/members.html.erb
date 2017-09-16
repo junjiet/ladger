@@ -140,10 +140,16 @@
 											</div>
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group mb5">
 										<label class="control-label col-sm-4">Gender</label>
 										<div id="divGender" class="col-sm-4">
 											<select id="cboGender" name="cboGender" class="form-control selectized" placeholder="Select gender..." style="display: none;" data-group="person" data-refresh="prsn_gender"></select>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-sm-4">Civil Status</label>
+										<div id="divCivilstatus" class="col-sm-4">
+											<select id="cboCivilstatus" name="cboCivilstatus" class="form-control selectized" placeholder="Select civil status..." style="display: none;" data-group="person" data-refresh="prsn_civilstatus"></select>
 										</div>
 									</div>
 								</div>
@@ -255,6 +261,20 @@
 				valueField: "gender_value",
 				labelField: "gender_display",
 				items: [2]
+			});
+
+			$('#cboCivilstatus').selectize({
+				maxItems: 1,
+				options: [
+					{status_value: 'S', status_display: 'Single'},
+					{status_value: 'M', status_display: 'Married'},
+					{status_value: 'W', status_display: 'Widow/Widower'},
+					{status_value: 'P', status_display: 'Separated'}
+				],
+				searchField: ["status_display"],
+				valueField: "status_value",
+				labelField: "status_display",
+				items: [4]
 			});
 
 			//---------------------------------------------------------
