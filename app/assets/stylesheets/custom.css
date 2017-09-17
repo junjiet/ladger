@@ -59,6 +59,9 @@
 .dataTables_wrapper .dataTables_length>label>select:focus {
 	border-color: #90A955;
 }
+.turbolinks-progress-bar {
+	background-color: #ECF39E;
+}
 
 /* pointer */
 .pointer-cursor {
