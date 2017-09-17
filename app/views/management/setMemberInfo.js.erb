@@ -1,1 +1,6 @@
-$('#modalMemberPersonalInfo').modal('hide');
+<% if @errorCode==nil %>
+	$('#modalMemberPersonalInfo').modal('hide');
+<% else %>
+	showError('#divError','<%= @errorMessage %>');
+	$('#modalMemberPersonalInfo .indicator').removeClass('show');
+<% end %>
