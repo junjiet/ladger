@@ -290,8 +290,15 @@
 
 			//---------------------------------------------------------
 			//EVENTS:
+			var readingPersonalInfo = false;
 			$(document).off('click','td.member-info');
 			$(document).on('click','td.member-info',function(){
+				if (readingPersonalInfo) {
+					console.log('double read of info prevented.');
+					return;
+				}
+				readingPersonalInfo = true;
+
 				var memberRow = $(this).closest('tr.member-row');
 				var personID = memberRow.attr('data-person-id');
 
@@ -303,7 +310,11 @@
 					type : 'GET',
 					data : { prsn_id : personID },
 					success : function() {
+						readingPersonalInfo = false;
 						$('#txtLname').focus();
+					},
+					error: function() {
+						readingPersonalInfo = false;
 					}
 				});
 			});
