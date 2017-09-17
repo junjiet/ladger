@@ -9,5 +9,10 @@ $('#txtFnamesuffix').val('<%= @personInfo[0].prsn_fnamesuffix %>');
 $('#txtMname').val('<%= @personInfo[0].prsn_mname %>');
 $('#txtMinitial').val('<%= @personInfo[0].prsn_minitial %>');
 
+var selectize = $('#cboGender')[0].selectize;
+selectize.setValue('<%= @personInfo[0].prsn_gender %>',true);
+selectize = $('#cboCivilstatus')[0].selectize;
+selectize.setValue('<%= @personInfo[0].prsn_civilstatus %>',true);
+
 $('#modalMemberPersonalInfo .indicator').removeClass('show');
 <% end %>
