@@ -315,6 +315,8 @@
 				var newFnamesuffix = $('#txtFnamesuffix').val();
 				var newMname = $('#txtMname').val();
 				var newMinitial = $('#txtMinitial').val();
+				var newGender = $('#cboGender')[0].selectize.getValue();
+				var newCivilstatus = $('#cboCivilstatus')[0].selectize.getValue();
 
 				$.ajax({
 					url: '<%= @urlBase %>/management/setMemberInfo',
@@ -325,10 +327,9 @@
 						prsn_fname: newFname,
 						prsn_fnamesuffix: newFnamesuffix,
 						prsn_mname: newMname,
-						prsn_minitial: newMinitial },
-					success: function() {
-						$('#modalMemberPersonalInfo').modal('hide');
-					}
+						prsn_minitial: newMinitial,
+						prsn_gender: newGender,
+						prsn_civilstatus: newCivilstatus }
 				});
 			});
 		});

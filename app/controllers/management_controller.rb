@@ -29,6 +29,9 @@ class ManagementController < ApplicationController
 		person.prsn_mname = prsnMname;
 		person.prsn_minitial = prsnMinitial;
 
+		person.prsn_gender = params[:prsn_gender];
+		person.prsn_civilstatus = params[:prsn_civilstatus];
+
 		person.save!;
 	end
 
