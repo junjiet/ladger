@@ -348,6 +348,15 @@
 						prsn_birthdate: newBirthdate }
 				});
 			});
+
+			//auto middle initial:
+			$('#txtMname').on('keyup',function(){
+				var mi = null;
+				if ($('#txtMname').val().length>=1) {
+					mi = $('#txtMname').val().charAt(0)+'.';
+				}
+				$('#txtMinitial').val(mi);
+			});
 		});
 	</script>
 </section>
