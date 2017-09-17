@@ -141,9 +141,12 @@
 										</div>
 									</div>
 									<div class="form-group mb5">
-										<label class="control-label col-sm-4">Gender</label>
+										<label class="control-label col-sm-4">Gender and Birthdate</label>
 										<div id="divGender" class="col-sm-4">
 											<select id="cboGender" name="cboGender" class="form-control selectized" placeholder="Select gender..." style="display: none;" data-group="person" data-refresh="prsn_gender"></select>
+										</div>
+										<div class="col-sm-4">
+											<input id="dtpBirthdate" class="form-control datepicker data-display" data-provide="datepicker" data-group="person" data-refresh="prsn_birthdate" placeholder="mm/dd/yyyy">
 										</div>
 									</div>
 									<div class="form-group">
@@ -249,6 +252,9 @@
 			//credits to a certain Andres Ilich
 			//url: https://stackoverflow.com/a/12592150
 			$(".modal").draggable({handle: '.modal-header'});
+
+			//initialize datepickers:
+			$('.datepicker').datepicker();
 
 			//initialize comboboxes:
 			$('#cboGender').selectize({
