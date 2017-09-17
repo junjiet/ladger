@@ -319,7 +319,14 @@
 				$('#modalMemberPersonalInfo .indicator').addClass('show');
 			})
 
+			var savingPersonalInfo = false;
 			$('#btnSaveMemberPersonalInfo').on('click',function(){
+				if (savingPersonalInfo) {
+					console.log('double submission of info prevented.');
+					return;
+				}
+				savingPersonalInfo = true;
+
 				$('#modalMemberPersonalInfo .indicator').addClass('show');
 
 				var personID = $('#divMemberWidget').attr('data-person-id');
@@ -345,7 +352,13 @@
 						prsn_minitial: newMinitial,
 						prsn_gender: newGender,
 						prsn_civilstatus: newCivilstatus,
-						prsn_birthdate: newBirthdate }
+						prsn_birthdate: newBirthdate },
+					success: function(){
+						savingPersonalInfo = false;
+					},
+					error: function(){
+						savingPersonalInfo = false;
+					}
 				});
 			});
 
