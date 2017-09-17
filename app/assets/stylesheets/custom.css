@@ -51,7 +51,10 @@
 .form-control:focus, .selectize-input.focus {
 	border-color: #90A955;
 }
-
+.ui-datepicker td a.ui-state-active,
+.ui-datepicker td span.ui-state-active {
+	background-color: #90A955!important;
+}
 
 /* pointer */
 .pointer-cursor {
