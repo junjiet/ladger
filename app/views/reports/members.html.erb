@@ -1,0 +1,53 @@
+<section id="main" role="main">
+	<div class="container-fluid">
+		<div class="page-header page-header-block">
+			<div class="page-header-section">
+				<h4 class="title semibold"><i class="ico-files"></i> Members</h4>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-9">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title"><i class="ico-list mr5"></i>Active Members</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="table-responsive">
+									<table id="tableMembers" class="table table-bordered table-hover table-condensed">
+										<thead>
+											<tr>
+												<th class="text-right">#</th>
+												<th>Member Name</th>
+												<th>Employee ID</th>
+												<th class="text-center">Gender</th>
+											</tr>
+										</thead>
+										<tbody>
+										<%
+										i=0
+										rowNumber = 0;
+										while i<@members.length do
+											rowNumber = rowNumber + 1;
+											member = @members[i];
+											%>
+											<tr class="member-row" data-person-id="<%= member.prsn_id %>">
+												<td class="text-right"><%= rowNumber %></td>
+												<td class="member-name"><%= member.prsn_fullname %></td>
+												<td class="employee-id"><%= member.employee_id %></td>
+												<td class="text-center"><%= member.prsn_gender %></td>
+											</tr>
+											<% i=i+1;
+										end %>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
