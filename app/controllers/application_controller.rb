@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
 
 	class MissingInformationError < ArgumentError
 	end
+	class InvalidInformationError < ArgumentError
+	end
 
 	private
 	def common
@@ -41,7 +43,7 @@ class ApplicationController < ActionController::Base
 			when 'WEB-0001'
 				message = 'Insufficient privilege.';
 			when 'WEB-0102'
-				message = 'Format of the information is not supported.'
+				message = 'Format of the information is not supported.';
 			when 'WEB-0103'
 				message = 'Required information is missing.';
 			else
