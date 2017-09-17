@@ -38,6 +38,9 @@ function showError(divAlertContainerID,errorMessage) {
 	}
 	setTimeout(function () {$(divAlertContainerID+' .alert').removeClass("animation animating shake");},1500);
 }
+function hideError(divAlertContainerID) {
+	$(divAlertContainerID).empty();
+}
 
 function activateMenu(currentController,currentAction) {
 	$('#mnuMain>li').each(function(){
