@@ -56,6 +56,9 @@
 .ui-datepicker td span.ui-state-active {
 	background-color: #90A955!important;
 }
+.dataTables_wrapper .dataTables_length>label>select:focus {
+	border-color: #90A955;
+}
 
 /* pointer */
 .pointer-cursor {
