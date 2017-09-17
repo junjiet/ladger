@@ -44,11 +44,14 @@
 	background-size: 100px 100px;
 }
 
-/* default panel headers */
-
+/* color themes */
 .panel-default > .panel-heading {
 	background-color: #90A955;
 }
+.form-control:focus, .selectize-input.focus {
+	border-color: #90A955;
+}
+
 
 /* pointer */
 .pointer-cursor {
