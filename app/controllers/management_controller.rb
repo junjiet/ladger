@@ -32,6 +32,15 @@ class ManagementController < ApplicationController
 		person.prsn_gender = params[:prsn_gender];
 		person.prsn_civilstatus = params[:prsn_civilstatus];
 
+		dateFormat = '%m/%d/%Y';
+		prsnBirthdate = params[:prsn_birthdate];
+		if prsnBirthdate=='' then
+			prsnBirthdate = nil;
+		else
+			prsnBirthdate = Date.strptime(prsnBirthdate,dateFormat);
+		end
+		person.prsn_birthdate = prsnBirthdate;
+
 		person.save!;
 	end
 

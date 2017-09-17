@@ -323,6 +323,7 @@
 				var newMinitial = $('#txtMinitial').val();
 				var newGender = $('#cboGender')[0].selectize.getValue();
 				var newCivilstatus = $('#cboCivilstatus')[0].selectize.getValue();
+				var newBirthdate = $('#dtpBirthdate').val();
 
 				$.ajax({
 					url: '<%= @urlBase %>/management/setMemberInfo',
@@ -335,7 +336,8 @@
 						prsn_mname: newMname,
 						prsn_minitial: newMinitial,
 						prsn_gender: newGender,
-						prsn_civilstatus: newCivilstatus }
+						prsn_civilstatus: newCivilstatus,
+						prsn_birthdate: newBirthdate }
 				});
 			});
 		});
