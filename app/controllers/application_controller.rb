@@ -2,6 +2,9 @@ class ApplicationController < ActionController::Base
 	protect_from_forgery with: :exception
 	before_action :common;
 
+	class MissingInformationError < ArgumentError
+	end
+
 	private
 	def common
 		#url base of the app available for all controllers:
@@ -27,6 +30,25 @@ class ApplicationController < ActionController::Base
 			my = '/ladger';
 		end
 		return "#{request.protocol}#{request.host_with_port}#{my}";
+	end
+
+	def getWebErrorMessage(errorCode)
+		#latest errorCode: WEB-0001, WEB-0103
+		message = '';
+		case errorCode
+			when 'WEB-0000'
+				message = 'Unexpected error encountered.';
+			when 'WEB-0001'
+				message = 'Insufficient privilege.';
+			when 'WEB-0102'
+				message = 'Format of the information is not supported.'
+			when 'WEB-0103'
+				message = 'Required information is missing.';
+			else
+				message = 'Unknown error code.';
+		end
+
+		return message;
 	end
 
 end
