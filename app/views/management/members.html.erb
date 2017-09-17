@@ -159,6 +159,11 @@
 							</form>
 						</div>
 					</div>
+					<div class="row">
+						<div id="divError" class="col-sm-12">
+							
+						</div>
+					</div>
 				</div>
 				<div class="modal-footer">
 					<button id="btnSaveMemberPersonalInfo" type="button" class="btn btn-success">Save</button>
@@ -306,6 +311,9 @@
 			$('#modalMemberPersonalInfo').on('hide.bs.modal',function(){
 				//reset .data-display refreshed status
 				$('#modalMemberPersonalInfo .data-display').attr('data-refreshed',false);
+
+				//removed error messages
+				hideError('#divError');
 
 				//return loading indicator
 				$('#modalMemberPersonalInfo .indicator').addClass('show');
