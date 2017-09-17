@@ -14,5 +14,10 @@ selectize.setValue('<%= @personInfo[0].prsn_gender %>',true);
 selectize = $('#cboCivilstatus')[0].selectize;
 selectize.setValue('<%= @personInfo[0].prsn_civilstatus %>',true);
 
+<% if @personInfo[0].prsn_birthdate!=nil then
+	dateFormat = "%m/%d/%Y"; %>
+	$('#dtpBirthdate').val('<%= @personInfo[0].prsn_birthdate.strftime(dateFormat) %>');
+<% end %>
+
 $('#modalMemberPersonalInfo .indicator').removeClass('show');
 <% end %>
