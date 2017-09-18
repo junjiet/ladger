@@ -62,6 +62,18 @@
 .turbolinks-progress-bar {
 	background-color: #ECF39E;
 }
+.btn-primary {
+	background-color: #31572C;
+	border-color: #4F772D;
+}
+.btn-primary:focus, .btn-primary:hover {
+	background-color: #4F772D;
+	border-color: #90A955;
+}
+.btn-primary:active {
+	background-color: #31572C;
+	border-color: #132A13;
+}
 
 /* pointer */
 .pointer-cursor {
