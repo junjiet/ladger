@@ -94,6 +94,8 @@ class ManagementController < ApplicationController
 				employee.save!;
 				if @newRecord then
 					member.save!;
+				else
+					@member = View_member.find_by(prsn_id: personID);
 				end
 
 				e = nil;
