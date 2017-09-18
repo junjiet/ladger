@@ -11,9 +11,28 @@ class ManagementController < ApplicationController
 
 	def setMemberInfo
 		personID = params[:prsn_id];
+
+		newRecord = false;
+		if personID=='' then
+			newRecord = true;
+		end
+
 		begin
 			Person.transaction do
-				person = Person.find_by!(prsn_id: personID);
+				member = nil;
+				if newRecord then
+					person = Person.new;
+					
+					personID = Person.maximum('prsn_id') + 1;
+					person.prsn_id = personID;
+
+					member = Member.new;
+					member.member_id = personID;
+					member.active_status=1;
+				else
+					person = Person.find_by!(prsn_id: personID);
+					member = Member.find_by!(member_id: personID);
+				end
 
 				prsnLname = params[:prsn_lname].strip;
 				prsnLname = nil if prsnLname=='';
@@ -59,15 +78,23 @@ class ManagementController < ApplicationController
 					raise MissingInformationError;
 				end
 
-				member = Public_id.find_by!(prsn_id: personID);
-				member.public_id = publicID;
+				if newRecord then
+					employee = Public_id.new;
+					employee.prsn_id = personID;
+				else
+					employee = Public_id.find_by!(prsn_id: personID);
+				end
+				employee.public_id = publicID;
 
-				if (!(person.valid?) || !(member.valid?)) then
+				if (!(person.valid?) || !(employee.valid?) || !(member.valid?)) then
 					raise InvalidInformationError;
 				end
 
-				member.save!;
 				person.save!;
+				employee.save!;
+				if newRecord then
+					member.save!;
+				end
 
 				e = nil;
 				@errorCode = nil;
