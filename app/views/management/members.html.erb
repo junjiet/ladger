@@ -10,6 +10,9 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title"><i class="ico-list mr5"></i>Cooperative Members</h3>
+						<div class="panel-toolbar text-right">
+							<button id="btnNewMember" class="btn btn-sm btn-primary">New</button>
+						</div>
 					</div>
 					<div class="panel-body">
 						<div class="row">
@@ -302,6 +305,7 @@
 				var memberRow = $(this).closest('tr.member-row');
 				var personID = memberRow.attr('data-person-id');
 
+				$('#divMemberWidget').removeClass('hidden');
 				$('#divMemberWidget').attr('data-person-id',personID);
 				$('#modalMemberPersonalInfo').modal({backdrop: 'static'});
 
@@ -381,6 +385,17 @@
 				}
 				$('#txtMinitial').val(mi);
 			});
+
+			$('#btnNewMember').on('click',function(){
+				//clear modal fields
+				$('#divMemberWidget').attr('data-person-id','');
+				$('#divMemberWidget').addClass('hidden');
+				$('#modalMemberPersonalInfo input').val('');
+
+				//show modal
+				$('#modalMemberPersonalInfo .indicator').removeClass('show');
+				$('#modalMemberPersonalInfo').modal({backdrop: 'static'});
+			})
 		});
 	</script>
 </section>
