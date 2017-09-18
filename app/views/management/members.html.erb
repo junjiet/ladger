@@ -11,7 +11,7 @@
 					<div class="panel-heading">
 						<h3 class="panel-title"><i class="ico-list mr5"></i>Cooperative Members</h3>
 						<div class="panel-toolbar text-right">
-							<button id="btnNewMember" class="btn btn-sm btn-default disabled">New</button>
+							<button id="btnNewMember" class="btn btn-sm btn-primary">New</button>
 						</div>
 					</div>
 					<div class="panel-body">
@@ -320,7 +320,6 @@
 				var memberRow = $(this).closest('tr.member-row');
 				var personID = memberRow.attr('data-person-id');
 
-				$('#divMemberWidget').removeClass('hidden');
 				$('#divMemberWidget').attr('data-person-id',personID);
 				$('#modalMemberPersonalInfo').modal({backdrop: 'static'});
 
@@ -345,8 +344,10 @@
 				//removed error messages
 				hideError('#divError');
 
-				//reset #txtEmployeeID
+				//reset UI
 				$('#txtEmployeeID').attr('disabled','');
+				$('#divMemberWidget').removeClass('hidden');
+				$('#btnEditEmployeeID').removeClass('disabled');
 
 				//return loading indicator
 				$('#modalMemberPersonalInfo .indicator').addClass('show');
@@ -407,9 +408,13 @@
 			});
 
 			$('#btnNewMember').on('click',function(){
+				//setup UI
+				$('#divMemberWidget').addClass('hidden');
+				$('#btnEditEmployeeID').addClass('disabled');
+				$('#txtEmployeeID').removeAttr('disabled');
+
 				//clear modal fields
 				$('#divMemberWidget').attr('data-person-id','');
-				$('#divMemberWidget').addClass('hidden');
 				$('#modalMemberPersonalInfo input').val('');
 
 				//show modal
