@@ -12,15 +12,15 @@ class ManagementController < ApplicationController
 	def setMemberInfo
 		personID = params[:prsn_id];
 
-		newRecord = false;
+		@newRecord = false;
 		if personID=='' then
-			newRecord = true;
+			@newRecord = true;
 		end
 
 		begin
 			Person.transaction do
 				member = nil;
-				if newRecord then
+				if @newRecord then
 					person = Person.new;
 					
 					personID = Person.maximum('prsn_id') + 1;
@@ -78,7 +78,7 @@ class ManagementController < ApplicationController
 					raise MissingInformationError;
 				end
 
-				if newRecord then
+				if @newRecord then
 					employee = Public_id.new;
 					employee.prsn_id = personID;
 				else
@@ -92,7 +92,7 @@ class ManagementController < ApplicationController
 
 				person.save!;
 				employee.save!;
-				if newRecord then
+				if @newRecord then
 					member.save!;
 				end
 

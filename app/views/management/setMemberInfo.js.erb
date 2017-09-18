@@ -1,5 +1,9 @@
 <% if @errorCode==nil %>
-	$('#modalMemberPersonalInfo').modal('hide');
+	<% if @newRecord then %>
+		location.reload();
+	<% else %>
+		$('#modalMemberPersonalInfo').modal('hide');
+	<% end %>
 <% else %>
 	showError('#divError','<%= @errorMessage %>');
 	$('#modalMemberPersonalInfo .indicator').removeClass('show');
