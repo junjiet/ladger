@@ -337,6 +337,10 @@
 				});
 			});
 			
+			$('#modalMemberPersonalInfo').on('shown.bs.modal',function(){
+				if (!readingPersonalInfo) { $('#txtLname').focus(); }
+			});
+
 			$('#modalMemberPersonalInfo').on('hide.bs.modal',function(){
 				//reset .data-display refreshed status
 				$('#modalMemberPersonalInfo .data-display').attr('data-refreshed',false);
