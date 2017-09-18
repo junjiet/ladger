@@ -21,5 +21,7 @@ selectize.setValue('<%= @personInfo[0].prsn_civilstatus %>',true);
 	$('#dtpBirthdate').val('');
 <% end %>
 
+$('#txtEmployeeID').val('<%= @memberInfo[0].employee_id %>');
+
 $('#modalMemberPersonalInfo .indicator').removeClass('show');
 <% end %>
