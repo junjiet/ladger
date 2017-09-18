@@ -372,6 +372,7 @@
 				var newGender = $('#cboGender')[0].selectize.getValue();
 				var newCivilstatus = $('#cboCivilstatus')[0].selectize.getValue();
 				var newBirthdate = $('#dtpBirthdate').val();
+				var newEmployeeID = $('#txtEmployeeID').val();
 
 				$.ajax({
 					url: '<%= @urlBase %>/management/setMemberInfo',
@@ -385,7 +386,8 @@
 						prsn_minitial: newMinitial,
 						prsn_gender: newGender,
 						prsn_civilstatus: newCivilstatus,
-						prsn_birthdate: newBirthdate },
+						prsn_birthdate: newBirthdate,
+						employee_id: newEmployeeID },
 					success: function(){
 						savingPersonalInfo = false;
 					},

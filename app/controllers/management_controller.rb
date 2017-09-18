@@ -12,57 +12,65 @@ class ManagementController < ApplicationController
 	def setMemberInfo
 		personID = params[:prsn_id];
 		begin
-			person = Person.find_by!(prsn_id: personID);
+			Person.transaction do
+				person = Person.find_by!(prsn_id: personID);
 
-			prsnLname = params[:prsn_lname].strip;
-			prsnLname = nil if prsnLname=='';
-			prsnLnamesuffix = params[:prsn_lnamesuffix].strip;
-			prsnLnamesuffix = nil if prsnLnamesuffix=='';
-			prsnFname = params[:prsn_fname].strip;
-			prsnFname = nil if prsnFname=='';
-			prsnFnamesuffix = params[:prsn_fnamesuffix].strip;
-			prsnFnamesuffix = nil if prsnFnamesuffix=='';
-			prsnMname = params[:prsn_mname].strip;
-			prsnMname = nil if prsnMname=='';
-			prsnMinitial = params[:prsn_minitial].strip;
-			prsnMinitial = nil if prsnMinitial=='';
-			prsnGender = params[:prsn_gender].strip;
-			prsnGender = nil if prsnGender=='';
-			prsnCivilstatus = params[:prsn_civilstatus].strip;
-			prsnCivilstatus = nil if prsnCivilstatus=='';
+				prsnLname = params[:prsn_lname].strip;
+				prsnLname = nil if prsnLname=='';
+				prsnLnamesuffix = params[:prsn_lnamesuffix].strip;
+				prsnLnamesuffix = nil if prsnLnamesuffix=='';
+				prsnFname = params[:prsn_fname].strip;
+				prsnFname = nil if prsnFname=='';
+				prsnFnamesuffix = params[:prsn_fnamesuffix].strip;
+				prsnFnamesuffix = nil if prsnFnamesuffix=='';
+				prsnMname = params[:prsn_mname].strip;
+				prsnMname = nil if prsnMname=='';
+				prsnMinitial = params[:prsn_minitial].strip;
+				prsnMinitial = nil if prsnMinitial=='';
+				prsnGender = params[:prsn_gender].strip;
+				prsnGender = nil if prsnGender=='';
+				prsnCivilstatus = params[:prsn_civilstatus].strip;
+				prsnCivilstatus = nil if prsnCivilstatus=='';
 
-			person.prsn_lname = prsnLname;
-			person.prsn_lnamesuffix = prsnLnamesuffix;
-			person.prsn_fname = prsnFname;
-			person.prsn_fnamesuffix = prsnFnamesuffix;
-			person.prsn_mname = prsnMname;
-			person.prsn_minitial = prsnMinitial;
-			person.prsn_gender = prsnGender;
-			person.prsn_civilstatus = prsnCivilstatus;
+				person.prsn_lname = prsnLname;
+				person.prsn_lnamesuffix = prsnLnamesuffix;
+				person.prsn_fname = prsnFname;
+				person.prsn_fnamesuffix = prsnFnamesuffix;
+				person.prsn_mname = prsnMname;
+				person.prsn_minitial = prsnMinitial;
+				person.prsn_gender = prsnGender;
+				person.prsn_civilstatus = prsnCivilstatus;
 
-			dateFormat = '%m/%d/%Y';
-			prsnBirthdate = params[:prsn_birthdate];
-			if prsnBirthdate=='' then
-				prsnBirthdate = nil;
-			else
-				prsnBirthdate = Date.strptime(prsnBirthdate,dateFormat);
+				dateFormat = '%m/%d/%Y';
+				prsnBirthdate = params[:prsn_birthdate];
+				if prsnBirthdate=='' then
+					prsnBirthdate = nil;
+				else
+					prsnBirthdate = Date.strptime(prsnBirthdate,dateFormat);
+				end
+				person.prsn_birthdate = prsnBirthdate;
+
+				# raise 'update cancelled: implementing exception handling.';
+				if (prsnLname==nil || prsnFname==nil || prsnGender==nil ||
+					(prsnMname!=nil && prsnMinitial==nil) || (prsnMname==nil && prsnMinitial!=nil) ) then
+					raise MissingInformationError;
+				end
+
+				member = Public_id.find_by!(prsn_id: personID);
+
+				publicID = params[:employee_id].strip;
+				member.public_id = publicID;
+
+				if (!(person.valid?) || !(member.valid?)) then
+					raise InvalidInformationError;
+				end
+
+				member.save!;
+				person.save!;
+
+				e = nil;
+				@errorCode = nil;
 			end
-			person.prsn_birthdate = prsnBirthdate;
-
-			# raise 'update cancelled: implementing exception handling.';
-			if (prsnLname==nil || prsnFname==nil || prsnGender==nil ||
-				(prsnMname!=nil && prsnMinitial==nil) || (prsnMname==nil && prsnMinitial!=nil) ) then
-				raise MissingInformationError;
-			end
-
-			if !(person.valid?) then
-				raise InvalidInformationError;
-			end
-
-			person.save!;
-
-			e = nil;
-			@errorCode = nil;
 		rescue InvalidInformationError => e
 			@errorCode = 'WEB-0102';
 		rescue MissingInformationError => e
