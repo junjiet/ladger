@@ -11,7 +11,7 @@
 					<div class="panel-heading">
 						<h3 class="panel-title"><i class="ico-list mr5"></i>Cooperative Members</h3>
 						<div class="panel-toolbar text-right">
-							<button id="btnNewMember" class="btn btn-sm btn-primary">New</button>
+							<button id="btnNewMember" class="btn btn-sm btn-default disabled">New</button>
 						</div>
 					</div>
 					<div class="panel-body">
@@ -156,6 +156,21 @@
 										<label class="control-label col-sm-4">Civil Status</label>
 										<div id="divCivilstatus" class="col-sm-4">
 											<select id="cboCivilstatus" name="cboCivilstatus" class="form-control selectized" placeholder="Select civil status..." style="display: none;" data-group="person" data-refresh="prsn_civilstatus"></select>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-sm-4">Employee ID No.<span class="text text-danger">*</span></label>
+										<div class="col-sm-8">
+											<div class="row">
+												<div class="col-xs-6">
+													<div class="input-group">
+														<span class="input-group-btn">
+															<button id="btnEditEmployeeID" class="btn btn-default" type="button">Edit</button>
+														</span>
+														<input id="txtEmployeeID" name="employee_id" type="text" class="form-control data-display text-right" placeholder="employee ID number" data-group="member" data-refresh="employee_id" data-refreshed=false disabled>
+													</div>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -330,6 +345,9 @@
 				//removed error messages
 				hideError('#divError');
 
+				//reset #txtEmployeeID
+				$('#txtEmployeeID').attr('disabled','');
+
 				//return loading indicator
 				$('#modalMemberPersonalInfo .indicator').addClass('show');
 			})
@@ -395,6 +413,11 @@
 				//show modal
 				$('#modalMemberPersonalInfo .indicator').removeClass('show');
 				$('#modalMemberPersonalInfo').modal({backdrop: 'static'});
+			})
+
+			$('#btnEditEmployeeID').on('click',function(){
+				$('#txtEmployeeID').removeAttr('disabled');
+				$('#txtEmployeeID').focus();
 			})
 		});
 	</script>
