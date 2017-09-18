@@ -31,6 +31,8 @@ class ManagementController < ApplicationController
 				prsnGender = nil if prsnGender=='';
 				prsnCivilstatus = params[:prsn_civilstatus].strip;
 				prsnCivilstatus = nil if prsnCivilstatus=='';
+				publicID = params[:employee_id].strip;
+				publicID = nil if publicID=='';
 
 				person.prsn_lname = prsnLname;
 				person.prsn_lnamesuffix = prsnLnamesuffix;
@@ -52,13 +54,12 @@ class ManagementController < ApplicationController
 
 				# raise 'update cancelled: implementing exception handling.';
 				if (prsnLname==nil || prsnFname==nil || prsnGender==nil ||
-					(prsnMname!=nil && prsnMinitial==nil) || (prsnMname==nil && prsnMinitial!=nil) ) then
+					(prsnMname!=nil && prsnMinitial==nil) || (prsnMname==nil && prsnMinitial!=nil) ||
+					publicID==nil) then
 					raise MissingInformationError;
 				end
 
 				member = Public_id.find_by!(prsn_id: personID);
-
-				publicID = params[:employee_id].strip;
 				member.public_id = publicID;
 
 				if (!(person.valid?) || !(member.valid?)) then
