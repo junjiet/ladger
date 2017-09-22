@@ -20,6 +20,7 @@
  *= require icons/iconfont/style
  *= require jquery-ui-timepicker
  *= require uielement.min
+ *= require sticky-footer
  *= require custom
  * require_tree .
  *= require_self
