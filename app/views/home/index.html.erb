@@ -15,7 +15,7 @@
 							</div>
 							<div class="col-xs-8 panel">
 								<div class="panel-body text-center">
-									<h4 class="semibold nm"><%= @members.count(:prsn_id) %></h4>
+									<h4 class="semibold nm"><%= link_to @members.count(:prsn_id), controller: :reports, action: :members %></h4>
 									<p class="semibold text-muted mb0 mt5">Active Members</p>
 								</div>
 							</div>
