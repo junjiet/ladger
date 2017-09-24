@@ -6,11 +6,6 @@
 		<%= favicon_link_tag 'logo.png' %>
 		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-		<%=
-		# following line added to support separate js files for each view:
-		# credited to a certain Lennart Koopmann
-		# url: https://stackoverflow.com/a/602192/5399719
-		yield :javascript_includes %>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
@@ -117,6 +112,11 @@
 		</aside>
 		<% end %>
 		<%= yield %>
+		<%=
+		# following line added to support separate js files for each view:
+		# credited to a certain Lennart Koopmann
+		# url: https://stackoverflow.com/a/602192/5399719
+		yield :javascript_includes %>
 		<script>
 			$(document).ready(function(){
 				activateMenu("<%= controller_name %>","<%= action_name %>");
