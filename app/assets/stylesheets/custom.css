@@ -52,6 +52,12 @@
 }
 
 /* color themes */
+a, a:visited {
+	color: #4F772D;
+}
+a:hover,a:focus,a:active {
+	color: #90A955;
+}
 .panel-default > .panel-heading {
 	background-color: #90A955;
 }
