@@ -1,0 +1,1 @@
+insert into loan_type values('L-01','Console Loan');
