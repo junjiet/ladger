@@ -36,7 +36,7 @@
 // require app.min
 
 //= require script-custom
-//= require_tree .
+// require_tree .
 
 // ----- jquery
 // ----- jquery_ujs
