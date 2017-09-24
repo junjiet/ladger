@@ -5,5 +5,24 @@
 				<h4 class="title semibold"><i class="ico-home"></i> Home Page</h4>
 			</div>
 		</div>
+		<div class="row">
+			<div class="col-lg-9">
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="table-layout animation delay animating fadeInDown">
+							<div class="col-xs-4 panel bgcolor-default">
+								<div class="ico-users3 fsize24 text-center"></div>
+							</div>
+							<div class="col-xs-8 panel">
+								<div class="panel-body text-center">
+									<h4 class="semibold nm"><%= @members.count(:prsn_id) %></h4>
+									<p class="semibold text-muted mb0 mt5">Active Members</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </section>
