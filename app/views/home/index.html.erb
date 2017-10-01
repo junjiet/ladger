@@ -2,8 +2,30 @@
 	<div class="container-fluid">
 		<div class="page-header page-header-block">
 			<div class="page-header-section">
-				<h4 class="title semibold"><i class="fa fa-home"></i> Home Page</h4>
+				<h4 class="title semibold"><i class="ico-home"></i> Home Page</h4>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-9">
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="table-layout">
+							<div class="col-xs-4 panel bgcolor-default">
+								<div class="ico-users3 fsize24 text-center"></div>
+							</div>
+							<div class="col-xs-8 panel">
+								<div class="panel-body text-center">
+									<h4 class="semibold nm"><%= link_to @members.count(:prsn_id), {controller: :reports, action: :members}, class: "counterup" %></h4>
+									<p class="semibold text-muted mb0 mt5">Active Members</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
+	<% content_for :javascript_includes do %>
+	  <%= javascript_include_tag "home-index.js", 'data-turbolinks-track': 'reload' %>
+	<% end %>
 </section>

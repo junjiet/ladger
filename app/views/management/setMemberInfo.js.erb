@@ -1,0 +1,18 @@
+<% if @errorCode==nil %>
+	<% if @newRecord then %>
+		location.reload();
+	<% else %>
+		var personID = '<%= @member.prsn_id %>';
+		var memberFullname = '<%= @member.prsn_fullname %>';
+		var employeeID = '<%= @member.employee_id %>';
+		var gender = '<%= @member.prsn_gender %>';
+
+		$('tr.member-row[data-person-id="'+personID+'"] .member-name').html(memberFullname);
+		$('tr.member-row[data-person-id="'+personID+'"] .employee-id').html(employeeID);
+		$('tr.member-row[data-person-id="'+personID+'"] .member-gender').html(gender);
+		$('#modalMemberPersonalInfo').modal('hide');
+	<% end %>
+<% else %>
+	showError('#divError','<%= @errorMessage %>');
+	$('#modalMemberPersonalInfo .indicator').removeClass('show');
+<% end %>

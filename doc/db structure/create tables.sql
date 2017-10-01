@@ -77,3 +77,72 @@ create table trail_login (
 	constraint trail_login_username_fk foreign key (username)
 	references user_account(username)
 );
+
+create table public_id (
+	public_id varchar(15),
+	prsn_id number(6) not null,
+	constraint public_id_pk primary key (public_id),
+	constraint public_id_fk foreign key (prsn_id)
+		references person(prsn_id)
+);
+
+create table member (
+	member_id number(6),
+	active_status number(1) not null,
+	constraint member_pk primary key (member_id)
+);
+
+create table voucher (
+	voucher_id number(9),
+	voucher_number varchar(15) not null,
+	constraint voucher_pk primary key (voucher_id)
+);
+
+create table loan_type (
+	loan_code varchar(15),
+	loan_name varchar(30) not null,
+	constraint loan_type_pk primary key (loan_code)
+);
+
+create table member_loan (
+	loan_id number(9),
+	member_id number(6) not null,
+	loan_code varchar(15) not null,
+	loan_amount number(9,2) not null,
+	loan_term number(2) not null,
+	loan_date datetime,
+	voucher_id number(9),
+	check_number varchar(15),
+	constraint member_loan_pk primary key (loan_id),
+	constraint member_loan_member_fk foreign key (member_id)
+		references member(member_id),
+	constraint member_loan_loan_fk foreign key (loan_code)
+		references loan_type(loan_code),
+	constraint member_loan_voucher_fk foreign key (voucher_id)
+		references voucher(voucher_id)
+);
+
+create table official_receipt (
+	or_number varchar(15),
+	or_date datetime,
+	total_amount number(9,2) not null,
+	constraint official_receipt_pk primary key (or_number)
+);
+
+create table payment (
+	payment_id number(9),
+	member_id number(6) not null,
+	voucher_id number(9) not null,
+	or_number varchar(15),
+	amount number(9,2) not null,
+	loan_id number(9),
+	constraint payment_pk primary key (payment_id),
+	constraint payment_member_fk foreign key (member_id)
+		references member(member_id),
+	constraint payment_voucher_fk foreign key (voucher_id)
+		references voucher(voucher_id),
+	constraint payment_or_fk foreign key (or_number)
+		references official_receipt(or_number),
+	constraint payment_loan_fk foreign key (loan_id)
+		references member_loan(loan_id)
+);

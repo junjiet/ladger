@@ -35,11 +35,115 @@
 	border-bottom: 2px solid #90A955;
 }
 
+.footer_design 
+{
+	background-color: #31572C;
+	color: white;
+}
+
 /* app logo */
 .logo-figure
 {
-	background-image: url("fire-exit.jpg");
+	background-image: url("logo.png");
 	width: 100px;
 	height: 100px;
 	background-size: 100px 100px;
+	background-position: 0px;
+}
+
+/* color themes */
+a, a:visited {
+	color: #4F772D;
+}
+a:hover,a:focus,a:active {
+	color: #90A955;
+}
+.panel-default > .panel-heading {
+	background-color: #90A955;
+}
+.form-control:focus, .selectize-input.focus {
+	border-color: #90A955;
+}
+.ui-datepicker td a.ui-state-active,
+.ui-datepicker td span.ui-state-active {
+	background-color: #90A955!important;
+}
+.dataTables_wrapper .dataTables_length>label>select:focus {
+	border-color: #90A955;
+}
+.turbolinks-progress-bar {
+	background-color: #ECF39E;
+}
+.btn-primary {
+	background-color: #31572C;
+	border-color: #4F772D;
+}
+.btn-primary:focus, .btn-primary:hover {
+	background-color: #4F772D;
+	border-color: #90A955;
+}
+.btn-primary:active {
+	background-color: #31572C;
+	border-color: #132A13;
+}
+
+/* pointer */
+.pointer-cursor {
+	cursor: pointer;
+}
+
+/* the following is to override settings of .modal-open to retain the page's vertical scrollbar when a modal is opened
+ * credit to a certain flup
+ * url: https://stackoverflow.com/a/25070157
+ */
+.modal-open {
+	overflow: scroll;
+}
+
+/* use bootstrap's table-condensed padding (to override uielement padding) */
+.table-condensed>thead>tr>th,
+.table-condensed>tbody>tr>th,
+.table-condensed>tfoot>tr>th,
+.table-condensed>thead>tr>td,
+.table-condensed>tbody>tr>td,
+.table-condensed>tfoot>tr>td {
+	padding: 5px;
+}
+
+.dropdown-menu {
+	min-width: 100px;
+}
+
+/* the following 3 classes added to center vertically the specified modals
+ * credits to a certain Rens de Nobel
+ * url: https://stackoverflow.com/a/24829651
+ */
+.vertical-alignment-helper {
+    display:table;
+    height: 100%;
+    width: 100%;
+    pointer-events:none; /* This makes sure that we can still click outside of the modal to close it */
+}
+.vertical-align-center {
+    /* To center vertically */
+    display: table-cell;
+    vertical-align: middle;
+    pointer-events:none;
+}
+.modal-content {
+    /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+    width:inherit;
+    height:inherit;
+    /* To center horizontally */
+    margin: 0 auto;
+    pointer-events: all;
+}
+
+/* to override layout.min css */
+.sidebar .topmenu li>.submenu li.active:after {
+	background-color: #90A955;
+}
+.sidebar .topmenu li.active a>.figure>[class*=" ico-"],
+.sidebar .topmenu li.active a>.figure>[class^=ico-] {
+	color: #90A955;
 }

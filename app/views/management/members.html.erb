@@ -1,0 +1,229 @@
+<section id="main" role="main">
+	<div class="container-fluid">
+		<div class="page-header page-header-block">
+			<div class="page-header-section">
+				<h4 class="title semibold"><i class="ico-users5"></i> Member Management</h4>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-9">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title"><i class="ico-list mr5"></i>Cooperative Members</h3>
+						<div class="panel-toolbar text-right">
+							<button id="btnNewMember" class="btn btn-sm btn-primary">New</button>
+						</div>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="table-responsive">
+									<table id="tableMembers" class="table table-bordered table-hover table-condensed">
+										<thead>
+											<tr>
+												<th class="text-right">#</th>
+												<th>Member Name</th>
+												<th>Employee ID</th>
+												<th class="text-center">Gender</th>
+												<th class="text-center">Active Status</th>
+											</tr>
+										</thead>
+										<tbody>
+										<%
+										i=0
+										rowNumber = 0;
+										while i<@members.length do
+											rowNumber = rowNumber + 1;
+											member = @members[i];
+											activeStatusName = 'Active';
+											activeCommand = 'Deactivate';
+											activeNext = 0;
+											activeStatusButton = 'btn-success';
+											if member.active_status==0 then
+												activeStatusName = 'Inactive';
+												activeCommand = 'Activate';
+												activeNext = 1;
+												activeStatusButton = 'btn-default';
+											end
+											%>
+											<tr class="member-row" data-person-id="<%= member.prsn_id %>">
+												<td class="text-right pointer-cursor member-info"><%= rowNumber %></td>
+												<td class="member-name pointer-cursor member-info"><%= member.prsn_fullname %></td>
+												<td class="employee-id pointer-cursor member-info"><%= member.employee_id %></td>
+												<td class="member-gender text-center pointer-cursor member-info"><%= member.prsn_gender %></td>
+												<td class="member-status text-center panel" data-active-status="<%= member.active_status %>">
+													<div class="btn-group mb0">
+														<button type="button" class="btn btn-xs <%= activeStatusButton %> dropdown-toggle" data-toggle="dropdown"><span class="active-status-name"><%= activeStatusName %></span> <span class="caret"></span></button>
+														<ul class="dropdown-menu" role="menu">
+															<li><a class="active-status-next" href="javascript:void(0);" data-active-status="<%= activeNext %>"><%= activeCommand %></a></li>
+														</ul>
+													</div>
+													<div class="indicator"><span class="spinner spinner8"></span></div>
+												</td>
+											</tr>
+											<% i=i+1;
+										end %>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="modalMemberPersonalInfo" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">Member Personal Information</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-sm-12">
+							<div id="divMemberWidget" class="widget panel" data-person-id="">
+								<div class="panel-body">
+									<ul class="list-table">
+										<li style="width: 70px;">
+											<img class="img-circle img-bordered" src=<%= image_url('logo.png') %> alt="" width="65px" height="65px">
+										</li>
+										<li class="text-left">
+											<h5 class="semibold ellipsis">
+												<span class="member-name"></span><br>
+												<small class="employee-id text-muted"></small>
+											</h5>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12">
+							<form class="form-horizontal panel panel-default">
+								<div class="panel-body">
+									<div class="form-group mb5">
+										<label class="control-label col-sm-4">Last Name<span class="text text-danger">*</span></label>
+										<div class="col-sm-8">
+											<div class="row">
+												<div class="col-xs-9 pr5">
+													<input id="txtLname" name="lname" type="text" class="form-control data-display" placeholder="last name" data-group="person" data-refresh="prsn_lname" data-refreshed=false>
+												</div>
+												<div class="col-xs-3 pl5">
+													<input id="txtLnamesuffix" name="lnamesuffix" type="text" class="form-control data-display" placeholder="suffix" data-group="person" data-refresh="prsn_lnamesuffix" data-refreshed=false>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="form-group mb5">
+										<label class="control-label col-sm-4">First Name<span class="text text-danger">*</span></label>
+										<div class="col-sm-8">
+											<div class="row">
+												<div class="col-xs-9 pr5">
+													<input id="txtFname" name="fname" type="text" class="form-control data-display" placeholder="first name" data-group="person" data-refresh="prsn_fname" data-refreshed=false>
+												</div>
+												<div class="col-xs-3 pl5">
+													<input id="txtFnamesuffix" name="fnamesuffix" type="text" class="form-control data-display" placeholder="suffix" data-group="person" data-refresh="prsn_fnamesuffix" data-refreshed=false>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-sm-4">Middle Name</label>
+										<div class="col-sm-8">
+											<div class="row">
+												<div class="col-xs-9 pr5">
+													<input id="txtMname" name="mname" type="text" class="form-control data-display" placeholder="middle name" data-group="person" data-refresh="prsn_mname" data-refreshed=false>
+												</div>
+												<div class="col-xs-3 pl5">
+													<input id="txtMinitial" name="minitial" type="text" class="form-control data-display" placeholder="middle initial" data-group="person" data-refresh="prsn_minitial" data-refreshed=false>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="form-group mb5">
+										<label class="control-label col-sm-4">Gender<span class="text text-danger">*</span> and Birthdate</label>
+										<div id="divGender" class="col-sm-4">
+											<select id="cboGender" name="cboGender" class="form-control selectized" placeholder="Select gender..." style="display: none;" data-group="person" data-refresh="prsn_gender"></select>
+										</div>
+										<div class="col-sm-4">
+											<input id="dtpBirthdate" class="form-control datepicker data-display" data-provide="datepicker" data-group="person" data-refresh="prsn_birthdate" placeholder="mm/dd/yyyy">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-sm-4">Civil Status</label>
+										<div id="divCivilstatus" class="col-sm-4">
+											<select id="cboCivilstatus" name="cboCivilstatus" class="form-control selectized" placeholder="Select civil status..." style="display: none;" data-group="person" data-refresh="prsn_civilstatus"></select>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-sm-4">Employee ID No.<span class="text text-danger">*</span></label>
+										<div class="col-sm-8">
+											<div class="row">
+												<div class="col-xs-6">
+													<div class="input-group">
+														<span class="input-group-btn">
+															<button id="btnEditEmployeeID" class="btn btn-default" type="button">Edit</button>
+														</span>
+														<input id="txtEmployeeID" name="employee_id" type="text" class="form-control data-display text-right" placeholder="employee ID number" data-group="member" data-refresh="employee_id" data-refreshed=false disabled>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="row">
+						<div id="divError" class="col-sm-12">
+							
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button id="btnSaveMemberPersonalInfo" type="button" class="btn btn-success">Save</button>
+					<button type="button" class="btn-cancel btn btn-default" data-dismiss="modal">Cancel</button>
+				</div>
+				<div class="indicator show"><span class="spinner spinner8"></span></div>
+			</div>
+		</div>
+	</div>
+	<div id="modalChangeStatus" class="modal fade" role="dialog">
+		<div class="vertical-alignment-helper">
+			<div class="modal-dialog modal-sm vertical-align-center">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title">Change Status</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<div class="row">
+								<label class="col-sm-3 control-label">Status</label>
+								<div class="col-sm-9">
+									<div class="radio custom-radio custom-radio-primary mb10">  
+										<input type="radio" id="rdoActive" value="1" name="rdo_activate_status">  
+										<label for="rdoActive">&nbsp;&nbsp;Active</label>   
+									</div>
+									<div class="radio custom-radio custom-radio-primary">  
+										<input type="radio" id="rdoInactive" value="0" name="rdo_activate_status">  
+										<label for="rdoInactive">&nbsp;&nbsp;Inactive</label>   
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn-cancel btn btn-default" data-dismiss="modal">Cancel</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<% content_for :javascript_includes do %>
+	  <%= javascript_include_tag "management-members.js", 'data-turbolinks-track': 'reload' %>
+	<% end %>
+</section>
