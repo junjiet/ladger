@@ -32,6 +32,8 @@
 //= require modernizr/js/modernizr.min
 
 //= require select2.full.min
+//= require jquery.waypoints
+//= require jquery.counterup
 
 // require app.min
 
