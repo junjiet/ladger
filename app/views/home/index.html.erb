@@ -25,12 +25,7 @@
 			</div>
 		</div>
 	</div>
-	<script>
-		$(document).ready(function() {
-			$('.counterup').counterUp({
-				delay: 10,
-				time: 1000
-			});
-		});
-	</script>
+	<% content_for :javascript_includes do %>
+	  <%= javascript_include_tag "home-index.js", 'data-turbolinks-track': 'reload' %>
+	<% end %>
 </section>
